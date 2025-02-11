@@ -407,11 +407,34 @@ article .icon {
 /* FOOTER SECTION */
 
 footer {
-  height: 26vh;
+  height: auto;
+  padding: 2rem 0;
   margin: 0 1rem;
+  text-align: center;
 }
 
 footer p {
   text-align: center;
+  margin-top: 1rem;
 }
 
+.socials-container {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.socials-container a {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.socials-container a:hover {
+  transform: scale(1.1);
+}
+
+.socials-container img {
+  height: 2.5rem;
+  width: 2.5rem;
+}
