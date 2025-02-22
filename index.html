@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Add DOMPurify CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.6/dist/purify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script>
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Portfolio</title>
+    <label class="toggle-switch">
+      <input type="checkbox" id="dark-mode-toggle">
+      <span class="slider"></span>
+    </label>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="mediaqueries.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  </head>
+  <body>
+
+    <!-- NAVBAR -->
+
+    <nav id="desktop-nav">
+      <div class="logo">Sayandeep Roy</div>
+      <div>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#interests">Interests</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <nav id="hamburger-nav">
+      <div class="logo">Sayandeep Roy</div>
+      <div class="hamburger-menu">
+        <div class="hamburger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="menu-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#interests">Interests</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </div>
+      </div>
+    </nav>
+
+    <!-- PROFILE -->
+
+    <section id="profile">
+        <div class="section__pic-container">
+          <img src="./assets/profile12.png" alt="My profile picture" />
+        </div>
+        <div class="section__text">
+          <p class="section__text__p1">Hello, I'm</p>
+          <h1 class="title">Sayandeep Roy</h1>
+          <p class="section__text__p2">Web Developer</p>
+          <div class="btn-container">
+            <button class="btn btn-color-2" onclick="downloadResume()">
+              Download CV
+            </button>
+            
+
+            <button class="btn btn-color-2" onclick="location.href='./#contact'">
+              Contact Info
+            </button>
+          </div>
+          <div id="socials-container">
+            <img
+              src="./assets/linkedin.png"
+              alt="My LinkedIn profile"
+              class="icon"
+              onclick="location.href='https://www.linkedin.com/in/sayandeep-roy-4b1246265?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app'"
+            />
+            <img
+              src="./assets/github.png"
+              alt="My Github profile"
+              class="icon"
+              onclick="location.href='https://github.com/Atom9950'"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Add this right below the profile section -->
+<section id="ai-chat">
+  <p class="section__text__p1">Take A Look At</p>
+      <h1 class="title">Atom</h1>
+  <div class="chat-container">
+    <div class="chat-messages" id="chat-messages">
+      <div class="ai-message">
+        <div class="message-content">
+          Hello! I'm Atom. How can I help you today?
+        </div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <input
+        type="text"
+        id="user-input"
+        placeholder="Type your message here..."
+        autocomplete="off"
+      />
+      <button id="send-button">
+        <img src="./assets/send-icon.png" alt="Send" class="send-icon" />
+      </button>
+    </div>
+  </div>
+</section>
+
+      <!-- ABOUT -->
+      
+    <section id="about">
+      <p class="section__text__p1">Get To Know More</p>
+      <h1 class="title">About Me</h1>
+      <div class="section-container">
+        <div class="section__pic-container">
+          <img
+            src="./assets/InShot_20250122_155927283.jpg"
+            alt="Profile picture"
+            class="about-pic"
+          />
+        </div>
+        <div class="about-details-container">
+          <div class="about-containers">
+            <div class="details-container">
+              <img
+                src="./assets/experience.png"
+                alt="Experience icon"
+                class="icon"
+              />
+              <h3>Experience</h3>
+              <p>2+ years of<br />Web Development</p>
+            </div>
+            <div class="details-container">
+              <img
+                src="./assets/education.png"
+                alt="Education icon"
+                class="icon"
+              />
+              <h3>Education</h3>
+              <p>B.Tech in Computer Science Engineering<br />Artificial Intelligence</p>
+            </div>
+          </div>
+          <div class="text-container">
+            <p>              
+                I’m Sayandeep, a passionate web developer pursuing B.Tech at Techno India University. With 2+ years of coding experience, 
+                I specialize in building innovative projects using React and Next.js. Below are some of my showcased works that reflect my
+                 dedication to creating efficient and user-friendly web applications.
+            </p>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#experience'"
+      />
+    </section>
+
+    <!-- EXPERIENCE -->
+
+    <section id="experience">
+      <p class="section__text__p1">Explore My</p>
+      <h1 class="title">Experience</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+
+          <!-- Frontend Dev -->
+
+          <div class="details-container">
+            <h2 class="experience-sub-title">Frontend Development</h2>
+            <div class="article-container">
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>HTML</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>CSS</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>JavaScript</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>TypeScript</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+             
+            </div>
+          </div>
+
+          <!-- Backend Dev -->
+
+          <div class="details-container">
+            <h2 class="experience-sub-title">Backend Development</h2>
+            <div class="article-container">
+             
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Node JS</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>React JS</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>Next JS</h3>
+                  <p>Intermediate</p>
+                </div>
+              </article>
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3>React Native</h3>
+                  <p>Basic</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#projects'"
+      />
+    </section>
+
+    <!-- PROJECTS -->
+
+    <section id="projects">
+      <p class="section__text__p1">Browse My Recent</p>
+      <h1 class="title">Projects</h1>
+      <div class="experience-details-container">
+        <div class="about-containers">
+
+          <!-- Project 1 -->
+
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/InShot_20250122_162200292.jpg"
+                alt="Project 1"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">Zentry <br> (version)</h2>
+            <p style="margin-bottom: 1rem;">It is a gaming website inspired by an award winning website, Zentry, featuring cool animations and an engaging experience.</p>
+            <div class="btn-container">
+                <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/Atom9950/3D-animated-website'"
+              >
+                Github
+              </button>
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://3-d-animated-website-nine.vercel.app/'"
+              >
+                Live Demo
+              </button>
+            </div>
+            <div class="tech-stack">
+              <div class="icon-container">
+                  <img src="./assets/icons8-react-a-javascript-library-for-building-user-interfaces-48.png" alt="React" class="tech-icon">
+                  <span class="tooltip"></span>
+              </div>
+              <div class="icon-container">
+                  <img src="./assets/icons8-js-50.png" alt="JavaScript" class="tech-icon">
+                  <span class="tooltip"></span>
+              </div>
+              <div class="icon-container">
+                  <img src=".//assets/icons8-tailwind-css-48.png" alt="Tailwind" class="tech-icon">
+                  <span class="tooltip"></span>
+              </div>
+          </div>
+          </div>
+
+          <!-- Project 2 -->
+
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/InShot_20250122_162431897.jpg"
+                alt="Project 2"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">Carepulse</h2>
+            <p style="margin-bottom: 1rem;">CarePulse is a healthcare website enabling users to register, schedule appointments, and manage healthcare services efficiently.</p>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/Atom9950/healthcare'"
+              >
+                Github
+              </button>
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://carepulse-azure-five.vercel.app/'"
+              >
+                Live Demo
+              </button>
+            </div>
+            <div class="tech-stack">
+              <div class="icon-container">
+                  <img src="./assets/icons8-nextjs-48.png" alt="Next" class="tech-icon">
+                  <span class="tooltip"></span>
+              </div>
+              <div class="icon-container">
+                  <img src="./assets/icons8-typescript-50.png" alt="TypeScript" class="tech-icon">
+                  <span class="tooltip"></span>
+              </div>
+              <div class="icon-container">
+                  <img src="./assets/icons8-tailwind-css-48.png" alt="Tailwind" class="tech-icon">
+                  <span class="tooltip"></span>
+              </div>
+          </div>
+          </div>
+
+          <!-- Project 3 -->
+
+          <div class="details-container color-container">
+            <div class="article-container">
+              <img
+                src="./assets/InShot_20250122_163402545.jpg"
+                alt="Project 3"
+                class="project-img"
+              />
+            </div>
+            <h2 class="experience-sub-title project-title">Sayanti Beauty Lounge & Exquisite</h2>
+            <p style="margin-bottom: 1rem;">Sayanti Beauty Lounge & Exquisite offers professional beauty services, including makeup, hairstyling, facials, and more.</p>
+            <div class="btn-container">
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://github.com/Atom9950/Sayanti-Beauty-Lounge-Exquisite'"
+              >
+                Github
+              </button>
+              <button
+                class="btn btn-color-2 project-btn"
+                onclick="location.href='https://atom9950.github.io/Sayanti-Beauty-Lounge-Exquisite/'"
+              >
+                Live Demo
+              </button>
+            </div>
+            <div class="tech-stack">
+              <div class="icon-container">
+                  <img src="./assets/icons8-html-50.png" alt="HTML" class="tech-icon">
+                  <span class="tooltip"></span>
+              </div>
+              <div class="icon-container">
+                  <img src="./assets/icons8-css-50.png" alt="CSS" class="tech-icon">
+                  <span class="tooltip"></span>
+              </div>
+              <div class="icon-container">
+                  <img src="./assets/icons8-js-50.png" alt="JavaScript" class="tech-icon">
+                  <span class="tooltip"></span>
+              </div>
+          </div>
+          </div>
+        </div>
+      </div>
+      <img
+        src="./assets/arrow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#interests'"
+      />
+    </section>
+
+    <!-- INTERESTS -->
+
+    <section id="interests">
+      <p class="section__text__p1">Check Out My</p>
+      <h1 class="title">Interests</h1>
+      <div class="about-details-container">
+        <div class="about-containers">
+
+          <!-- Web Development -->
+          <div class="details-container">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="50" height="50">
+              <path d="M0 32l34.9 395.8L192 480l157.1-52.2L384 32H0zm308.2 127.9H124.4l4.1 49.4h175.6l-13.6 148.4-97.9 27v.3h-1.1l-98.7-27.3-6-75.8h47.7L138 320l53.5 14.5 53.7-14.5 6-62.2H84.3L71.5 112.2h241.1l-4.4 47.7z"/>
+            </svg>
+            <h3>Web Development</h3>
+            <p>
+              I am passionate about creating responsive and user-friendly websites. From designing intuitive interfaces with HTML, CSS, and JavaScript to building robust backends with Node.js, I enjoy the entire process of bringing web applications to life.
+            </p>
+          </div>
+    
+          <!-- Artificial Intelligence -->
+          <div class="details-container">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" width="50" height="50">
+              <path d="M32 224h32v192H32a31.962 31.962 0 0 1-32-32V256a31.962 31.962 0 0 1 32-32zm512-48v272a64.063 64.063 0 0 1-64 64H160a64.063 64.063 0 0 1-64-64V176a79.974 79.974 0 0 1 80-80h112V32a32 32 0 0 1 64 0v64h112a79.974 79.974 0 0 1 80 80zm-280 80a40 40 0 1 0-40 40 40 40 0 0 0 40-40zm-8 128h-64v32h64zm96 0h-64v32h64zm104-128a40 40 0 1 0-40 40 40 40 0 0 0 40-40zm-8 128h-64v32h64zm192-128v128a31.962 31.962 0 0 1-32 32h-32V224h32a31.962 31.962 0 0 1 32 32z"/>
+            </svg>
+            <h3>Artificial Intelligence</h3>
+            <p>
+              I am fascinated by the potential of AI to solve complex problems. I enjoy exploring machine learning algorithms, natural language processing, and computer vision to develop intelligent systems that can learn and adapt.
+            </p>
+          </div>
+    
+          <!-- Video Editing -->
+          <div class="details-container">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="50" height="50">
+              <path d="M336.2 64H47.8C21.4 64 0 85.4 0 111.8v288.4C0 426.6 21.4 448 47.8 448h288.4c26.4 0 47.8-21.4 47.8-47.8V111.8c0-26.4-21.4-47.8-47.8-47.8zm189.4 37.7L416 177.3v157.4l109.6 75.5c21.2 14.6 50.4-.3 50.4-25.8V127.5c0-25.4-29.1-40.4-50.4-25.8z"/>
+            </svg>
+            <h3>Video Editing</h3>
+            <p>
+              I have a passion for storytelling through video. Using tools like Da Vinci Resolve & Capcut, I create engaging and visually appealing content that captures the audience's attention and conveys powerful messages.
+            </p>
+          </div>
+        </div>
+      </div>
+      <img
+      src="./assets/arrow.png"
+      alt="Arrow icon"
+      class="icon arrow"
+      onclick="location.href='./#contact'"
+    />
+    </section>
+
+    <!-- CONTACT -->
+
+    <section id="contact">
+      <p class="section__text__p1">Get In Touch</p>
+      <h1 class="title">Contact Me</h1>
+      <div class="contact-info-upper-container">
+        <div class="contact-info-container">
+          <img
+            src="./assets/email.png"
+            alt="Email icon"
+            class="icon contact-icon email-icon"
+          />
+          <p class="nav-links"><a href="mailto:sdroy001@gmail.com">sdroy001@gmail.com</a></p>
+        </div>
+        <div class="contact-info-container">
+          <img
+            src="./assets/linkedin.png"
+            alt="LinkedIn icon"
+            class="icon contact-icon"
+          />
+          <p class="nav-links"><a href="https://www.linkedin.com/in/sayandeep-roy-4b1246265?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+
+<footer>
+  <nav>
+    <div class="nav-links-container">
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#interests">Interests</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="socials-container">
+    <a href="https://www.instagram.com/sdroyy?igsh=N3g0ZGI1N3dkd20w" target="_blank">
+      <img src="./assets/pngwing.com.png" alt="Instagram" class="icon" />
+    </a>
+    <a href="https://discord.gg/SJwUGaCh" target="_blank">
+      <img src="./assets/pngwing.com2.png" alt="Discord" class="icon" />
+    </a>
+    <a href="https://x.com/SdeepR0?t=vp_lVl2GKQ_o3bZokzY-ew&s=09" target="_blank">
+      <img src="./assets/pngwing.com (3).png" alt="X (Twitter)" class="icon" />
+    </a>
+    <a href="https://www.youtube.com/@AniShree" target="_blank">
+      <img src="./assets/pngwing.com (4).png" alt="YouTube" class="icon" />
+    </a>
+  </div>
+  <p>Copyright &#169; 2025 Sayandeep Roy. All Rights Reserved.</p>
+</footer>
+  </body>
+  <script type="module" src="script.js"></script>
+  
+</html>
