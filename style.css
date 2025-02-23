@@ -200,6 +200,14 @@ section {
   min-height: fit-content;
 }
 
+.profile-pic {
+  transition: transform 0.3s ease-in-out;
+}
+
+.profile-pic:hover {
+  transform: scale(0.9);
+}
+
 .section__pic-container {
   display: flex;
   height: 400px;
@@ -242,6 +250,11 @@ section {
 .icon {
   cursor: pointer;
   height: 2rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.icon:hover {
+  transform: scale(0.9);
 }
 
 /* BUTTONS */
@@ -311,6 +324,11 @@ section {
 
 .about-pic {
   border-radius: 2rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.about-pic:hover {
+  transform: scale(0.9);
 }
 
 .arrow {
@@ -394,6 +412,12 @@ article .icon {
   border-radius: 2rem;
   width: 90%;
   height: 90%;
+  transition: transform 0.3s ease-in-out;
+}
+
+
+.project-img:hover {
+  transform: scale(0.9);
 }
 
 .project-title {
