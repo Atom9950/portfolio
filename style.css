@@ -205,6 +205,11 @@ section {
   height: 400px;
   width: 400px;
   margin: auto 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.section__pic-container:hover {
+  transform: scale(0.9);
 }
 
 .section__text {
