@@ -200,14 +200,6 @@ section {
   min-height: fit-content;
 }
 
-.profile-pic {
-  transition: transform 0.3s ease-in-out;
-}
-
-.profile-pic:hover {
-  transform: scale(0.9);
-}
-
 .section__pic-container {
   display: flex;
   height: 400px;
