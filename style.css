@@ -902,3 +902,46 @@ body.dark-mode #user-input:disabled {
   }
 }
 
+.preloader {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 9999;
+  background-color: #141516;
+  top: 0;
+  left: 0;
+}
+
+.preloader-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 300px);
+}
+
+.preloader-svg path {
+  fill: #141516;
+}
+
+.preloader-text {
+  display: flex;
+  color: white;
+  font-size: 42px;
+  align-items: center;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
+}
+
+.preloader-text span:first-child {
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  margin-right: 10px;
+}

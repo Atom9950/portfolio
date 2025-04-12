@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="mediaqueries.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+
   </head>
   <body>
 
@@ -54,6 +56,20 @@
         </div>
       </div>
     </nav>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+      <p class="preloader-text"><span></span><span id="changing-text">Hello</span></p>
+      <svg class="preloader-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path d=""></path>
+      </svg>
+  </div>
+
+  <!-- Your main website content (hidden initially) -->
+  <div class="content" id="content" style="display: none;">
+      <!-- Your website content goes here -->
+  </div>
+
 
     <!-- PROFILE -->
 

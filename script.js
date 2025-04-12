@@ -2,83 +2,6 @@ import { GEMINI_API_KEY } from './config.js';
 
 // GSAP Animations
 document.addEventListener('DOMContentLoaded', () => {
-  gsap.from("#desktop-nav", {
-    y: -50,
-    opacity: 0,
-    duration: 1,
-    ease: "power3.out"
-  });
-
-  gsap.from(".nav-links li", {
-    opacity: 0,
-    y: -20,
-    duration: 0.8,
-    stagger: 0.1,
-    ease: "power2.out",
-    delay: 0.3
-  });
-
-  gsap.from(".logo", {
-    opacity: 0,
-    x: -20,
-    duration: 0.8,
-    ease: "power2.out",
-    delay: 0.2
-  });
-
-  gsap.from("#profile .section__pic-container img", {
-    opacity: 0,
-    scale: 0.8,
-    duration: 1,
-    ease: "power2.out"
-  });
-
-  gsap.from("#profile .section__text", {
-    opacity: 0,
-    y: 30,
-    duration: 1,
-    ease: "power2.out",
-    delay: 0.3
-  });
-
-  gsap.from("#profile .btn-container .btn", {
-    opacity: 0,
-    y: 20,
-    duration: 0.8,
-    stagger: 0.2,
-    ease: "power2.out",
-    delay: 0.5
-  });
-
-  gsap.from("#profile #socials-container .icon", {
-    opacity: 0,
-    y: 20,
-    duration: 0.8,
-    stagger: 0.2,
-    ease: "power2.out",
-    delay: 0.7
-  });
-
-  gsap.fromTo(
-    "#ai-chat .chat-container",
-    {
-      y: 100,
-      opacity: 0,
-    },
-    {
-      y: 0,
-      opacity: 1,
-      duration: 1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: "#ai-chat",
-        start: "top center+=100",
-        end: "top center-=100",
-        toggleActions: "play none none reverse",
-      },
-    }
-  );
-
   gsap.from("#ai-chat .chat-messages, #ai-chat .chat-input", {
     y: 50,
     opacity: 0,
@@ -439,4 +362,104 @@ darkModeToggle.addEventListener("change", () => {
     body.classList.remove("dark-mode");
     localStorage.setItem("dark-mode", "disabled");
   }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const preloader = document.getElementById('preloader');
+  const content = document.getElementById('content');
+  const changingText = document.getElementById('changing-text');
+  const svgPath = document.querySelector('.preloader-svg path');
+  
+  const words = ["Hello", "Hola", "Bonjour","olá","こんにちは", "नमस्ते", "নমস্কার","ہیلو", "合禮"];
+  let index = 0;
+  
+  // Set dimensions
+  const setDimension = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      document.querySelector('.preloader-svg').setAttribute('viewBox', `0 0 ${width} ${height + 300}`);
+      return { width, height };
+  };
+  
+  // Set initial SVG path with circular curve
+  const setSvgPath = () => {
+      const { width, height } = setDimension();
+      const initialPath = `M0 0 L${width} 0 L${width} ${height} Q${width/2} ${height + 300} 0 ${height} L0 0`;
+      svgPath.setAttribute('d', initialPath);
+  };
+  
+  // Animate text appearance
+  const animateText = () => {
+      gsap.to('.preloader-text', {
+          opacity: 0.75,
+          duration: 1,
+          delay: 0.2,
+          ease: "power2.out"
+      });
+  };
+  
+  // Cycle through words
+  const cycleWords = () => {
+      if (index < words.length - 1) {
+          setTimeout(() => {
+              index++;
+              changingText.textContent = words[index];
+              cycleWords();
+          }, index === 0 ? 1000 : 150);
+      }
+  };
+  
+  // Animate exit with circular curve (matches your React version exactly)
+  const animateExit = () => {
+      const { width, height } = setDimension();
+      
+      // Create timeline for synchronized animations
+      const tl = gsap.timeline();
+      
+      // Animate the SVG path to flatten the curve
+      tl.to(svgPath, {
+          attr: { 
+              d: `M0 0 L${width} 0 L${width} ${height} Q${width/2} ${height} 0 ${height} L0 0`
+          },
+          duration: 0.7,
+          ease: "power2.inOut"
+      }, 0);
+      
+      // Slide up the entire preloader (matches your Framer Motion animation)
+      tl.to(preloader, {
+          y: '-100%',
+          duration: 0.8,
+          ease: "power2.inOut",
+          delay: 0.3, // Matches your 0.3s delay
+          onComplete: () => {
+              preloader.style.display = 'none';
+              content.style.display = 'block';
+              document.body.style.cursor = 'default';
+              window.scrollTo(0, 0);
+          }
+      });
+      
+      // Fade out text to match your opacity animation
+      tl.to('.preloader-text', {
+          opacity: 0,
+          duration: 0.3
+      }, 0.5);
+  };
+  
+  // Initialize
+  setSvgPath();
+  animateText();
+  cycleWords();
+  
+  // Handle window resize
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(setSvgPath, 100);
+  });
+  
+  // Start exit animation after 2 seconds (matches your React version)
+  setTimeout(() => {
+      animateExit();
+  }, 2000);
 });
