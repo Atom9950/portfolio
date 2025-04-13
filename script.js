@@ -1,27 +1,46 @@
 import { GEMINI_API_KEY } from './config.js';
 
-// GSAP Animations
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
+
 document.addEventListener('DOMContentLoaded', () => {
-  gsap.from("#ai-chat .chat-messages, #ai-chat .chat-input", {
-    y: 50,
+  // Initialize all animations
+  initAnimations();
+});
+
+function initAnimations() {
+  // Chatbot Section Animation - Fixed version
+  gsap.from("#ai-chat .chat-container", {
+    y: 80,
     opacity: 0,
-    duration: 0.8,
-    stagger: 0.2,
+    duration: 1,
+    ease: "power3.out",
     scrollTrigger: {
       trigger: "#ai-chat",
-      start: "top center+=100",
-      end: "top center-=100",
-      toggleActions: "play none none reverse",
-    },
+      start: "top 75%",
+      end: "top 25%",
+      toggleActions: "play none none none",
+      markers: false // Set to true for debugging
+    }
   });
 
-  gsap.registerPlugin(ScrollTrigger);
+  // Staggered animation for chat elements
+  gsap.from("#ai-chat .chat-messages, #ai-chat .chat-input", {
+    y: 40,
+    opacity: 0,
+    duration: 0.5,
+    stagger: 0.15,
+    delay: 0.1,
+    scrollTrigger: {
+      trigger: "#ai-chat .chat-container",
+      start: "top 80%",
+      toggleActions: "play none none none"
+    }
+  });
 
-  gsap.fromTo("#about .section-container",
-    {
-      y: 100,
-      opacity: 0
-    },
+  // About Section
+  gsap.fromTo("#about .section-container", 
+    { y: 100, opacity: 0 },
     {
       y: 0,
       opacity: 1,
@@ -29,83 +48,43 @@ document.addEventListener('DOMContentLoaded', () => {
       ease: "power3.out",
       scrollTrigger: {
         trigger: "#about",
-        start: "top center+=100",
-        end: "top center-=100",
-        toggleActions: "play none none reverse"
+        start: "top 75%",
+        end: "top 25%",
+        toggleActions: "play none none none"
       }
     }
   );
 
-  gsap.fromTo("#experience .experience-details-container",
-    {
-      y: 100,
-      opacity: 0
-    },
-    {
-      y: 0,
-      opacity: 1,
-      duration: 1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: "#experience",
-        start: "top center+=100",
-        end: "top center-=100",
-        toggleActions: "play none none reverse"
-      }
-    }
-  );
-
-  gsap.fromTo("#projects .experience-details-container",
-    {
-      y: 100,
-      opacity: 0
-    },
-    {
-      y: 0,
-      opacity: 1,
-      duration: 1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: "#projects",
-        start: "top center+=100",
-        end: "top center-=100",
-        toggleActions: "play none none reverse"
-      }
-    }
-  );
-
-  gsap.from("#projects .color-container", {
-    y: 50,
+  // Experience Section
+  gsap.from("#experience .experience-details-container", {
+    y: 80,
     opacity: 0,
-    duration: 0.8,
-    stagger: 0.2,
+    duration: 1,
+    stagger: 0.1,
     scrollTrigger: {
-      trigger: "#projects",
-      start: "top center+=100",
-      end: "top center-=100",
-      toggleActions: "play none none reverse"
+      trigger: "#experience",
+      start: "top 75%",
+      toggleActions: "play none none none"
     }
   });
 
-  gsap.fromTo("#interests .about-details-container",
-    {
-      y: 100,
-      opacity: 0
-    },
-    {
-      y: 0,
-      opacity: 1,
-      duration: 1,
-      ease: "power3.out",
+  // Projects Section
+  const projectContainers = gsap.utils.toArray("#projects .color-container");
+  projectContainers.forEach((container, i) => {
+    gsap.from(container, {
+      y: 60,
+      opacity: 0,
+      duration: 0.8,
+      delay: i * 0.15,
       scrollTrigger: {
-        trigger: "#interests",
-        start: "top center+=100",
-        end: "top center-=100",
-        toggleActions: "play none none reverse"
+        trigger: container,
+        start: "top 80%",
+        toggleActions: "play none none none"
       }
-    }
-  );
+    });
+  });
 
+  // Interests Section
   gsap.from("#interests .details-container", {
     y: 50,
     opacity: 0,
@@ -113,45 +92,24 @@ document.addEventListener('DOMContentLoaded', () => {
     stagger: 0.2,
     scrollTrigger: {
       trigger: "#interests",
-      start: "top center+=100",
-      end: "top center-=100",
-      toggleActions: "play none none reverse"
+      start: "top 75%",
+      toggleActions: "play none none none"
     }
   });
 
-  gsap.fromTo("#contact .contact-info-upper-container",
-    {
-      y: 100,
-      opacity: 0
-    },
-    {
-      y: 0,
-      opacity: 1,
-      duration: 1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: "#contact",
-        start: "top center+=100",
-        end: "top center-=100",
-        toggleActions: "play none none reverse"
-      }
-    }
-  );
-
+  // Contact Section
   gsap.from("#contact .contact-info-container", {
-    y: 30,
+    y: 40,
     opacity: 0,
     duration: 0.6,
     stagger: 0.15,
     scrollTrigger: {
       trigger: "#contact",
-      start: "top center+=100",
-      end: "top center-=100",
-      toggleActions: "play none none reverse"
+      start: "top 75%",
+      toggleActions: "play none none none"
     }
   });
-});
-
+}
 // Chat functionality with Gemini API integration
 
 
@@ -370,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const changingText = document.getElementById('changing-text');
   const svgPath = document.querySelector('.preloader-svg path');
   
-  const words = ["Hello", "Hola", "Bonjour","olá","こんにちは", "नमस्ते", "নমস্কার","ہیلو", "合禮"];
+  const words = ["Hello", "Hola", "Bonjour","olá","こんにちは","合禮", "नमस्ते", "ہیلو", "নমস্কার" ];
   let index = 0;
   
   // Set dimensions
