@@ -264,25 +264,21 @@ section {
 }
 
 .btn {
+  color: black;
+  border: 1px solid rgb(163, 163, 163);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
   font-weight: 600;
-  opacity: 1 !important;
-  display: inline-block;
-  padding: 1rem;
-  width: 8rem;
-  border-radius: 2rem;
-  transition: all 300ms ease;
-}
-
-.btn-color-1,
-.btn-color-2 {
-  border: rgb(53, 53, 53) 0.1rem solid;
+  min-width: 100px;
 }
 
 .btn-color-1:hover,
 .btn-color-2:hover {
-  cursor: pointer;
-  background: rgb(33, 33, 33);
-  color: rgb(245, 238, 238);
+  color: whitesmoke;
+   background-color: #2d2d2d;
   transform: translateY(-2px);
 }
 
@@ -484,17 +480,18 @@ article .icon {
 }
 
 .project-btn {
-  font-weight: 600;
-  opacity: 1 !important;
-  display: inline-block;
-  padding: 1rem;
-  width: 8rem;
-  border-radius: 2rem;
-  transition: all 300ms ease;
+  color: black;
+  border: 1px solid rgb(163, 163, 163);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  min-width: 100px;
 }
 
 .project-btn:hover {
-  background-color: #000000;
+  background-color: #2d2d2d;
   transform: translateY(-2px);
 }
 
@@ -544,56 +541,6 @@ article .icon {
 }
 
 /* Responsive adjustments */
-@media (max-width: 1024px) {
-  .about-containers1 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  #projects {
-    padding: 3rem 1.5rem;
-  }
-  
-  .about-containers1 {
-    grid-template-columns: 1fr;
-    max-width: 500px;
-    margin: 2rem auto;
-  }
-  
-  .article-container1 {
-    height: 250px;
-  }
-}
-
-@media (max-width: 480px) {
-  #projects {
-    padding: 2rem 1rem;
-  }
-  
-  #projects .title {
-    font-size: 2rem;
-  }
-  
-  .project-title {
-    font-size: 1.2rem;
-  }
-  
-  .btn-container {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .project-btn {
-    width: 100%;
-    max-width: 200px;
-  }
-  
-  .tech-icon {
-    width: 25px;
-    height: 25px;
-  }
-}
 
 /* INTEREST SECTION */
 #interests {

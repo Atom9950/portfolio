@@ -165,4 +165,56 @@
     }
   }
 
+  @media (max-width: 1024px) {
+    .about-containers1 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    #projects {
+      padding: 3rem 1.5rem;
+    }
+    
+    .about-containers1 {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+      margin: 2rem auto;
+    }
+    
+    .article-container1 {
+      height: 250px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    #projects {
+      padding: 2rem 1rem;
+    }
+    
+    #projects .title {
+      font-size: 2rem;
+    }
+    
+    .project-title {
+      font-size: 1.2rem;
+    }
+    
+    .btn-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .project-btn {
+      width: 100%;
+      max-width: 200px;
+    }
+    
+    .tech-icon {
+      width: 25px;
+      height: 25px;
+    }
+  }
+  
+
  
