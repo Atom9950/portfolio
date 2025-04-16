@@ -421,3 +421,46 @@ document.addEventListener('DOMContentLoaded', () => {
       animateExit();
   }, 2000);
 });
+
+
+
+// Animation for the profile sectoin text
+document.addEventListener('DOMContentLoaded', function() {
+  const typingContent = document.querySelector('.typing-content');
+  const professions = ['Web Developer', 'App Developer', 'AI Enthusiast', 'Video Editor'];
+  let currentIndex = 0;
+  let isTyping = true;
+  let currentText = '';
+  let charIndex = 0;
+  let typingSpeed = 200;  
+let erasingSpeed = 100; 
+let newTextDelay = 3000;
+
+  function typeText() {
+    if (charIndex < professions[currentIndex].length) {
+      currentText += professions[currentIndex].charAt(charIndex);
+      typingContent.textContent = currentText;
+      charIndex++;
+      setTimeout(typeText, typingSpeed);
+    } else {
+      // Finished typing, wait then start erasing
+      setTimeout(eraseText, newTextDelay);
+    }
+  }
+
+  function eraseText() {
+    if (charIndex > 0) {
+      currentText = currentText.substring(0, charIndex - 1);
+      typingContent.textContent = currentText;
+      charIndex--;
+      setTimeout(eraseText, erasingSpeed);
+    } else {
+      // Finished erasing, move to next text
+      currentIndex = (currentIndex + 1) % professions.length;
+      setTimeout(typeText, typingSpeed);
+    }
+  }
+
+  // Start the animation
+  typeText();
+});

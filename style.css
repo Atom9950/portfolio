@@ -242,6 +242,27 @@ section {
   gap: 1rem;
 }
 
+.typing-text {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  height: 2.5rem; /* Fixed height to prevent layout shift */
+  display: inline-block;
+}
+
+.typing-content {
+  display: inline-block;
+}
+
+.typing-cursor {
+  display: inline-block;
+  animation: blink 1s infinite; /* Changed from 0.7s */
+  
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
 /* ICONS */
 
 .icon {
