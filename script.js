@@ -464,3 +464,94 @@ let newTextDelay = 3000;
   // Start the animation
   typeText();
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  const canvas = document.getElementById('fluid-canvas');
+  const ctx = canvas.getContext('2d');
+  let mouseX = 0;
+  let mouseY = 0;
+  const particles = [];
+  const particleCount = 150;
+  const color = '#FFD700'; // Yellow color
+
+  // Set canvas size
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+
+  // Particle class
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.vx = 0;
+      this.vy = 0;
+      this.radius = Math.random() * 2 + 1;
+      this.targetRadius = this.radius;
+    }
+
+    update() {
+      const dx = mouseX - this.x;
+      const dy = mouseY - this.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const force = (1 - dist / 200) * 10;
+
+      if (dist < 150) {
+        const angle = Math.atan2(dy, dx);
+        this.vx += Math.cos(angle) * force;
+        this.vy += Math.sin(angle) * force;
+      }
+
+      this.vx *= 0.85;
+      this.vy *= 0.85;
+      this.x += this.vx;
+      this.y += this.vy;
+      
+      // Size animation
+      if (dist < 50) this.targetRadius = 4;
+      else this.targetRadius = this.radius;
+      
+      this.radius += (this.targetRadius - this.radius) * 0.1;
+    }
+
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.fill();
+    }
+  }
+
+  // Create particles
+  for (let i = 0; i < particleCount; i++) {
+    particles.push(new Particle());
+  }
+
+  // Mouse move handler
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  // Animation loop
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    particles.forEach(particle => {
+      particle.update();
+      particle.draw();
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+
+  // Add subtle trail effect
+  canvas.style.backgroundColor = 'transparent';
+  ctx.globalCompositeOperation = 'lighter';
+});
