@@ -355,7 +355,7 @@ section {
 .details-container {
   padding: 1.5rem;
   flex: 1;
-  background: white;
+  background: rgb(250, 250, 250);
   border-radius: 2rem;
   border: rgb(53, 53, 53) 0.1rem solid;
   border-color: rgb(163, 163, 163);
@@ -561,7 +561,6 @@ article .icon {
   visibility: visible;
 }
 
-/* Responsive adjustments */
 
 /* INTEREST SECTION */
 #interests {
@@ -634,7 +633,7 @@ article .icon {
   border-radius: 2rem;
   border: rgb(53, 53, 53) 0.1rem solid;
   border-color: rgb(163, 163, 163);
-  background: (250, 250, 250);
+  background: rgb(250, 250, 250);
   margin: 2rem auto;
   padding: 0.5rem;
 }
@@ -752,23 +751,6 @@ body.dark-mode {
   color: #ffffff;
 }
 
-/* Dark Mode Overrides for About Section */
-body.dark-mode #about,
-body.dark-mode #experience,
-body.dark-mode #projects,
-body.dark-mode #interests {
-  background-color: #121212 !important; 
-  color: #ffffff !important; 
-}
-
-/* Dark Mode Overrides for Contact Section */
-body.dark-mode .details-container,
-body.dark-mode .color-container,
-body.dark-mode .contact-info-upper-container {
-  background-color: #121212 !important; 
-  border-color: #ffffff !important; 
-}
-
 body.dark-mode .hamburger-icon span {
   background-color: white; 
 }
@@ -843,6 +825,12 @@ body.dark-mode .icon {
 }
 body.dark-mode .icon-container{
   filter: invert(1);
+}
+
+/* Dark Mode Overrides for Contact Section */
+body.dark-mode .contact-info-upper-container {
+  background-color: #121212;
+  color: #ffffff;
 }
 
 #ai-chat {
