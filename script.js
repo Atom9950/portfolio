@@ -465,7 +465,7 @@ let newTextDelay = 3000;
   typeText();
 });
 
-
+// Background animation
 document.addEventListener('DOMContentLoaded', () => {
   const canvas = document.getElementById('fluid-canvas');
   const ctx = canvas.getContext('2d');
@@ -483,31 +483,50 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', resizeCanvas);
   resizeCanvas();
 
-  // Particle class
+  // Particle class with automatic movement
   class Particle {
     constructor() {
       this.x = Math.random() * canvas.width;
       this.y = Math.random() * canvas.height;
-      this.vx = 0;
-      this.vy = 0;
+      this.vx = Math.random() * 0.5 - 0.25; // Random initial velocity
+      this.vy = Math.random() * 0.5 - 0.25;
       this.radius = Math.random() * 2 + 1;
       this.targetRadius = this.radius;
+      this.baseX = this.x; // For floating movement
+      this.baseY = this.y;
+      this.angle = Math.random() * Math.PI * 2; // For circular motion
+      this.floatSpeed = Math.random() * 0.02 + 0.01; // Floating speed
+      this.floatDistance = Math.random() * 20 + 10; // Floating distance
     }
 
     update() {
+      // Automatic floating movement
+      this.angle += this.floatSpeed;
+      this.baseX += Math.sin(this.angle * 0.5) * 0.2;
+      this.baseY += Math.cos(this.angle * 0.7) * 0.2;
+      
+      // Mouse interaction
       const dx = mouseX - this.x;
       const dy = mouseY - this.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      const force = (1 - dist / 200) * 10;
-
+      
       if (dist < 150) {
+        const force = (1 - dist / 200) * 10;
         const angle = Math.atan2(dy, dx);
         this.vx += Math.cos(angle) * force;
         this.vy += Math.sin(angle) * force;
       }
 
+      // Return to floating position when mouse is far
+      const returnForce = 0.05;
+      this.vx += (this.baseX - this.x) * returnForce;
+      this.vy += (this.baseY - this.y) * returnForce;
+
+      // Apply friction
       this.vx *= 0.85;
       this.vy *= 0.85;
+      
+      // Update position
       this.x += this.vx;
       this.y += this.vy;
       
@@ -541,6 +560,10 @@ document.addEventListener('DOMContentLoaded', () => {
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
+    // Add subtle trail effect
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    
     particles.forEach(particle => {
       particle.update();
       particle.draw();
@@ -551,7 +574,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   animate();
 
-  // Add subtle trail effect
+  // Canvas styling
   canvas.style.backgroundColor = 'transparent';
   ctx.globalCompositeOperation = 'lighter';
 });
