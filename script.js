@@ -427,7 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Animation for the profile sectoin text
 document.addEventListener('DOMContentLoaded', function() {
   const typingContent = document.querySelector('.typing-content');
-  const professions = ['Web Developer', 'App Developer', 'AI Enthusiast', 'Video Editor'];
+  const professions = ['Web Developer', 'AI Enthusiast', 'Video Editor'];
   let currentIndex = 0;
   let isTyping = true;
   let currentText = '';
@@ -473,7 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let mouseY = 0;
   const particles = [];
   const particleCount = 150;
-  const color = '#FFD700'; // Yellow color
+  const color = '#FFD700';
 
   // Set canvas size
   function resizeCanvas() {
@@ -488,15 +488,15 @@ document.addEventListener('DOMContentLoaded', () => {
     constructor() {
       this.x = Math.random() * canvas.width;
       this.y = Math.random() * canvas.height;
-      this.vx = Math.random() * 0.5 - 0.25; // Random initial velocity
+      this.vx = Math.random() * 0.5 - 0.25;
       this.vy = Math.random() * 0.5 - 0.25;
       this.radius = Math.random() * 2 + 1;
       this.targetRadius = this.radius;
-      this.baseX = this.x; // For floating movement
+      this.baseX = this.x;
       this.baseY = this.y;
-      this.angle = Math.random() * Math.PI * 2; // For circular motion
-      this.floatSpeed = Math.random() * 0.02 + 0.01; // Floating speed
-      this.floatDistance = Math.random() * 20 + 10; // Floating distance
+      this.angle = Math.random() * Math.PI * 2;
+      this.floatSpeed = Math.random() * 0.02 + 0.01;
+      this.floatDistance = Math.random() * 20 + 10;
     }
 
     update() {
