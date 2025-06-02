@@ -427,7 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Animation for the profile sectoin text
 document.addEventListener('DOMContentLoaded', function() {
   const typingContent = document.querySelector('.typing-content');
-  const professions = ['Web Developer', 'AI Enthusiast', 'Video Editor'];
+  const professions = ['Web Developer', 'Vibe Coder', 'AI Enthusiast', 'Video Editor'];
   let currentIndex = 0;
   let isTyping = true;
   let currentText = '';
