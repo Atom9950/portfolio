@@ -142,6 +142,7 @@ a:hover {
   color: white;
   text-decoration: none; 
   transition: all 0.3s ease-in-out;
+  letter-spacing: 1px;
 }
 
 .menu-links a::after {
