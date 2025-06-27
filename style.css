@@ -278,6 +278,10 @@ section {
 
 /* BUTTONS */
 
+a.btn.btn-color-2:hover {
+    text-decoration: none !important;
+  }
+
 .btn-container {
   display: flex;
   justify-content: center;
