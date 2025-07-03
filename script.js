@@ -68,6 +68,58 @@ function initAnimations() {
     }
   });
 
+  // Work Experience Timeline Animation
+  gsap.from("#work-experience .timeline-container", {
+    y: 60,
+    opacity: 0,
+    duration: 1,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: "#work-experience",
+      start: "top 75%",
+      toggleActions: "play none none none"
+    }
+  });
+
+  gsap.from("#work-experience .timeline-dot", {
+    scale: 0,
+    opacity: 0,
+    duration: 0.6,
+    delay: 0.3,
+    scrollTrigger: {
+      trigger: "#work-experience",
+      start: "top 75%",
+      toggleActions: "play none none none"
+    }
+  });
+
+  gsap.from("#work-experience .timeline-content", {
+    x: 100,
+    opacity: 0,
+    duration: 0.8,
+    delay: 0.5,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: "#work-experience",
+      start: "top 75%",
+      toggleActions: "play none none none"
+    }
+  });
+
+  gsap.from("#work-experience .company-logo, #work-experience .experience-header, #work-experience .experience-details li", {
+    y: 20,
+    opacity: 0,
+    duration: 0.4,
+    stagger: 0.1,
+    delay: 0.8,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: "#work-experience",
+      start: "top 75%",
+      toggleActions: "play none none none"
+    }
+  });
+
   // Projects Section
   const projectContainers = gsap.utils.toArray("#projects .color-container");
   projectContainers.forEach((container, i) => {
