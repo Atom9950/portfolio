@@ -982,7 +982,7 @@ body.dark-mode .contact-info-upper-container {
 
 .chat-container {
   background-color: #f5f5f5;
-  border-radius: 15px;
+  border-radius: 2rem;
   margin-top: 20px;
   overflow: hidden;
   border: 2px solid #ccc;
