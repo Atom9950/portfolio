@@ -68,68 +68,61 @@ function initAnimations() {
     }
   });
 
-  // Work Experience Timeline Animation - Responsive
-const workExperienceAnimations = () => {
-  // Common ScrollTrigger configuration
-  const triggerConfig = {
-    trigger: "#work-experience",
-    start: "top 80%",
-    toggleActions: "play none none none",
-    markers: false // Remove in production
-  };
-
-  // Mobile detection
-  const isMobile = window.innerWidth < 768;
-
-  // Timeline container animation
-  gsap.from("#work-experience .timeline-container", {
-    y: isMobile ? 30 : 60,
-    opacity: 0,
-    duration: isMobile ? 0.8 : 1,
-    ease: "power3.out",
-    scrollTrigger: triggerConfig
-  });
-
-  // Timeline dot animation (if you have dots)
-  if (document.querySelector("#work-experience .timeline-dot")) {
-    gsap.from("#work-experience .timeline-dot", {
+// Work Experience Timeline Animation - Responsive Version
+const workExperienceAnimation = () => {
+  const mm = gsap.matchMedia();
+  
+  mm.add({
+    // Desktop
+    desktop: "(min-width: 768px)",
+    mobile: "(max-width: 767px)"
+  }, (context) => {
+    const { desktop, mobile } = context.conditions;
+    
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#work-experience",
+        start: "top 75%",
+        toggleActions: "play none none none"
+      }
+    });
+    
+    // Common animations for all devices
+    timeline.from("#work-experience .timeline-container", {
+      y: mobile ? 30 : 60,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out"
+    });
+    
+    timeline.from("#work-experience .timeline-dot", {
       scale: 0,
       opacity: 0,
-      duration: isMobile ? 0.4 : 0.6,
-      delay: isMobile ? 0.1 : 0.3,
-      scrollTrigger: triggerConfig
+      duration: 0.6,
+      delay: mobile ? 0.1 : 0.3
+    }, "<");
+    
+    timeline.from("#work-experience .timeline-content", {
+      x: mobile ? 40 : 100,
+      opacity: 0,
+      duration: 0.8,
+      delay: mobile ? 0.2 : 0.5,
+      ease: "power2.out"
     });
-  }
-
-  // Timeline content animation
-  gsap.from("#work-experience .timeline-content", {
-    x: isMobile ? 40 : 100,
-    opacity: 0,
-    duration: isMobile ? 0.6 : 0.8,
-    delay: isMobile ? 0.3 : 0.5,
-    ease: "power2.out",
-    scrollTrigger: triggerConfig
-  });
-
-  // Item stagger animation
-  gsap.from("#work-experience .company-logo, #work-experience .experience-header, #work-experience .experience-details li", {
-    y: isMobile ? 10 : 20,
-    opacity: 0,
-    duration: isMobile ? 0.3 : 0.4,
-    stagger: isMobile ? 0.05 : 0.1,
-    delay: isMobile ? 0.5 : 0.8,
-    ease: "power2.out",
-    scrollTrigger: triggerConfig
+    
+    timeline.from("#work-experience .company-logo, #work-experience .experience-header, #work-experience .experience-details li", {
+      y: mobile ? 10 : 20,
+      opacity: 0,
+      duration: 0.4,
+      stagger: mobile ? 0.05 : 0.1,
+      delay: mobile ? 0.3 : 0.8,
+      ease: "power2.out"
+    });
   });
 };
 
-// Initialize on load and resize
-window.addEventListener('load', workExperienceAnimations);
-window.addEventListener('resize', () => {
-  // Kill existing animations before reinitializing
-  ScrollTrigger.getAll().forEach(t => t.kill());
-  workExperienceAnimations();
-});
+// Initialize the animation
+workExperienceAnimation();
 
   // Projects Section
   const projectContainers = gsap.utils.toArray("#projects .color-container");
