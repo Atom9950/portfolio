@@ -216,7 +216,7 @@ section {
 .timeline-container1::before {
   content: '';
   position: absolute;
-  top: 60%;             
+  top: 59%;             
   left: 50px;           
   height: 32%;          
   width: 2px;
