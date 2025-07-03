@@ -216,5 +216,145 @@
     }
   }
   
+  @media (max-width: 480px) {
+  .timeline-item {
+    flex-direction: column;
+  }
+  
+  .timeline-date {
+    text-align: left;
+    margin-bottom: 5px;
+    padding-right: 0;
+  }
+  
+  .timeline-content {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
+
+/* Medium devices (tablets, 768px and down) */
+@media (max-width: 768px) {
+  .timeline-container,
+  .timeline-container1 {
+    padding: 15px;
+  }
+  
+  .timeline-container::before,
+  .timeline-container1::before {
+    left: 40px;
+  }
+  
+  .timeline-container::before {
+    top: 40px;
+    height: 45%;
+  }
+  
+  .timeline-container1::before {
+    top: 65%;
+    height: 25%;
+  }
+}
+
+/* Small devices (phones, 480px and down) */
+@media (max-width: 480px) {
+  .timeline-container,
+  .timeline-container1 {
+    padding: 10px;
+  }
+  
+  .timeline-container::before,
+  .timeline-container1::before {
+    left: 30px;
+    width: 1.5px; /* Thinner line on small screens */
+  }
+  
+  .timeline-container::before {
+    top: 35px;
+    height: 50%;
+  }
+  
+  .timeline-container1::before {
+    top: 57%;
+    height: 37%;
+  }
+}
+
+/* Extra small devices (320px and down) */
+@media (max-width: 320px) {
+  .timeline-container::before,
+  .timeline-container1::before {
+    left: 25px;
+  }
+  
+  .timeline-container::before {
+    top: 30px;
+  }
+  
+  .timeline-container1::before {
+    top: 75%;
+  }
+}
+
+@media (max-width: 768px) {
+  /* .timeline-container {
+    padding: 0 10px;
+  }
+  
+  .timeline-container::before {
+    left: 20px;
+  } */
+  
+  @media (max-width: 576px) {
+  .timeline-container,
+  .timeline-container1 {
+    padding: 10px;
+  }
+  
+  .timeline-container::before,
+  .timeline-container1::before {
+    left: 30px;
+    width: 1.5px;
+  }
+  
+  /* Adjust content spacing */
+  .timeline-item {
+    padding-left: 15px;
+  }
+}
+
+@media (max-width: 400px) {
+  .timeline-container::before,
+  .timeline-container1::before {
+    left: 25px;
+    height: 60% !important;
+  }
+  
+  /* Make dates more compact */
+  .timeline-date {
+    font-size: 0.9rem;
+  }
+  
+  /* Tighten content spacing */
+  .timeline-content {
+    padding: 10px 0;
+  }
+}
+
+  .timeline-dot {
+    left: 18px;
+  }
+  
+  .timeline-date {
+    width: 70px;
+    font-size: 0.8rem;
+  }
+  
+  .timeline-content {
+    margin-left: 20px;
+    padding: 15px;
+  }
+}
+
 
  
