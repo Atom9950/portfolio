@@ -278,8 +278,9 @@ section {
 
 .job-title {
   color: #666;
-  font-size: 0.9rem;
+  font-size: 1rem;
   margin-top: 3px;
+  font-weight: bold;
 }
 
 .timeline-details ul {
