@@ -301,55 +301,180 @@ function downloadResume() {
   document.body.removeChild(link);
 }
 
-let menuLinks, hamburgerIcon;
-
-function toggleMenu() {
-  menuLinks.classList.toggle("open");
-  hamburgerIcon.classList.toggle("open");
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  menuLinks = document.querySelector(".menu-links");
-  hamburgerIcon = document.querySelector(".hamburger-icon");
-
-  hamburgerIcon.addEventListener("click", function (event) {
-    event.stopPropagation();
-    toggleMenu();
-  });
-
-  document.querySelectorAll(".menu-links a, .menu-links li").forEach((element) => {
-    element.addEventListener("click", () => {
-      menuLinks.classList.remove("open");
-      hamburgerIcon.classList.remove("open");
-    });
-  });
-
-  document.addEventListener("click", (event) => {
-    if (
-      !menuLinks.contains(event.target) &&
-      !hamburgerIcon.contains(event.target)
-    ) {
-      menuLinks.classList.remove("open");
-      hamburgerIcon.classList.remove("open");
-    }
-  });
-});
-
-let lastScrollTop = 0;
-const hamburgerNav = document.getElementById("hamburger-nav");
-const scrollThreshold = 5;
-
-window.addEventListener("scroll", function () {
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-  if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
-    hamburgerNav.style.top = "-100px";
-  } else {
-    hamburgerNav.style.top = "0";
+// Animated Navigation Menu Implementation
+class AnimatedNavigation {
+  constructor() {
+    this.isActive = false;
+    this.burgerButton = document.getElementById('burger-button');
+    this.burger = document.getElementById('burger');
+    this.navMenu = document.getElementById('nav-menu');
+    this.navLinks = document.querySelectorAll('.nav-link');
+    this.svgCurve = document.querySelector('.nav-curve path');
+    this.currentPath = '';
+    
+    this.init();
   }
 
-  lastScrollTop = scrollTop;
+  init() {
+    this.setupEventListeners();
+    this.setupSVGCurve();
+    this.setActiveNavLink();
+  }
+
+  setupEventListeners() {
+    // Burger button click
+    this.burgerButton.addEventListener('click', (e) => {
+      e.stopPropagation();
+      this.toggleMenu();
+    });
+
+    // Navigation link clicks
+    this.navLinks.forEach((link, index) => {
+      link.addEventListener('click', (e) => {
+        this.handleNavLinkClick(e, link, index);
+      });
+
+      // Hover effects
+      link.addEventListener('mouseenter', () => {
+        this.setActiveIndicator(link);
+      });
+    });
+
+    // Reset indicator on mouse leave
+    this.navMenu.addEventListener('mouseleave', () => {
+      this.setActiveNavLink();
+    });
+
+    // Close menu on outside click
+    document.addEventListener('click', (e) => {
+      if (!this.navMenu.contains(e.target) && !this.burgerButton.contains(e.target)) {
+        this.closeMenu();
+      }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      this.setupSVGCurve();
+    });
+  }
+
+  setupSVGCurve() {
+    const height = window.innerHeight;
+    this.initialPath = `M100 0 L100 ${height} Q-100 ${height/2} 100 0`;
+    this.targetPath = `M100 0 L100 ${height} Q100 ${height/2} 100 0`;
+    
+    // Set initial curve
+    this.svgCurve.setAttribute('d', this.initialPath);
+  }
+
+  toggleMenu() {
+    this.isActive = !this.isActive;
+    
+    if (this.isActive) {
+      this.openMenu();
+    } else {
+      this.closeMenu();
+    }
+  }
+
+  openMenu() {
+    this.isActive = true;
+    this.burger.classList.add('active');
+    this.navMenu.classList.add('active');
+    
+    // Animate SVG curve
+    this.animateSVGCurve(this.targetPath, 1000);
+    
+    // Stagger nav links animation is handled by CSS delays
+    setTimeout(() => {
+      this.setActiveNavLink();
+    }, 300);
+  }
+
+  closeMenu() {
+    this.isActive = false;
+    this.burger.classList.remove('active');
+    this.navMenu.classList.remove('active');
+    
+    // Animate SVG curve back
+    this.animateSVGCurve(this.initialPath, 800);
+  }
+
+  animateSVGCurve(targetPath, duration) {
+    const currentPath = this.svgCurve.getAttribute('d');
+    
+    // Simple easing animation for SVG path
+    const startTime = performance.now();
+    
+    const animate = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Cubic bezier easing: cubic-bezier(0.76, 0, 0.24, 1)
+      const easeProgress = this.cubicBezier(progress, 0.76, 0, 0.24, 1);
+      
+      // For simplicity, we'll just switch to target path at 50% progress
+      if (progress >= 0.5 && this.svgCurve.getAttribute('d') !== targetPath) {
+        this.svgCurve.setAttribute('d', targetPath);
+      }
+      
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      }
+    };
+    
+    requestAnimationFrame(animate);
+  }
+
+  cubicBezier(t, x1, y1, x2, y2) {
+    // Simplified cubic bezier calculation
+    return 3 * (1 - t) * (1 - t) * t * x1 + 3 * (1 - t) * t * t * x2 + t * t * t;
+  }
+
+  setActiveIndicator(activeLink) {
+    // Remove active class from all links
+    this.navLinks.forEach(link => {
+      link.classList.remove('active');
+    });
+    
+    // Add active class to current link
+    if (activeLink) {
+      activeLink.classList.add('active');
+    }
+  }
+
+  setActiveNavLink() {
+    // Get current page section or default to home
+    const currentHash = window.location.hash || '#';
+    let activeLink = null;
+    
+    this.navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentHash || (href === '#' && currentHash === '')) {
+        activeLink = link;
+      }
+    });
+    
+    this.setActiveIndicator(activeLink || this.navLinks[0]);
+  }
+
+  handleNavLinkClick(e, link, index) {
+    // Don't prevent default to allow normal navigation
+    this.setActiveIndicator(link);
+    
+    // Close menu after a short delay
+    setTimeout(() => {
+      this.closeMenu();
+    }, 300);
+  }
+}
+
+// Initialize the animated navigation when DOM is loaded
+document.addEventListener("DOMContentLoaded", function () {
+  new AnimatedNavigation();
 });
+
+// Remove old hamburger scroll functionality as it's no longer needed
 
 document.querySelectorAll('.icon-container').forEach(container => {
   const img = container.querySelector('.tech-icon');
