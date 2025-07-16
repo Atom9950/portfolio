@@ -61,11 +61,11 @@ a:hover {
   text-decoration-color: rgb(181, 181, 181);
 }
 
-#desktop-nav {
+/* #desktop-nav {
 display: flex;
 justify-content: flex-start;
 padding-left: 10rem;
-}
+} */
 
 #hamburger-nav {
 display: flex;
@@ -94,7 +94,7 @@ padding-left: 2rem;
   border-radius: 50%;
   background-color: #000000;
   cursor: pointer;
-  display: flex !important; /* Force display on all screen sizes */
+  display: flex; /* Default display, controlled by media queries */
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
@@ -323,9 +323,17 @@ padding-left: 2rem;
   }
 }
 
-/* Show burger button on all screen sizes */
-.burger-button {
-  display: flex !important;
+/* Hide burger button on desktop, show on mobile/tablet */
+@media screen and (min-width: 1200px) {
+  body .burger-button {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 1199px) {
+  body .burger-button {
+    display: flex !important;
+  }
 }
 
 /* Hide old hamburger nav on all screen sizes since we have the new animated one */
@@ -333,13 +341,10 @@ padding-left: 2rem;
   display: flex !important;
 }
 
-/* Override mediaqueries.css rules to ensure animated navbar works on desktop */
+/* Override mediaqueries.css rules */
 @media screen and (min-width: 1200px) {
   #hamburger-nav {
     display: none !important;
-  }
-  .burger-button {
-    display: flex !important;
   }
 }
 
