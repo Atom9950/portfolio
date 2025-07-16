@@ -309,15 +309,12 @@ class AnimatedNavigation {
     this.burger = document.getElementById('burger');
     this.navMenu = document.getElementById('nav-menu');
     this.navLinks = document.querySelectorAll('.nav-link');
-    this.svgCurve = document.querySelector('.nav-curve path');
-    this.currentPath = '';
     
     this.init();
   }
 
   init() {
     this.setupEventListeners();
-    this.setupSVGCurve();
     this.setActiveNavLink();
   }
 
@@ -352,20 +349,10 @@ class AnimatedNavigation {
       }
     });
 
-    // Handle window resize
-    window.addEventListener('resize', () => {
-      this.setupSVGCurve();
-    });
+    // Removed resize handler for SVG curve
   }
 
-  setupSVGCurve() {
-    const height = window.innerHeight;
-    this.initialPath = `M100 0 L100 ${height} Q-100 ${height/2} 100 0`;
-    this.targetPath = `M100 0 L100 ${height} Q100 ${height/2} 100 0`;
-    
-    // Set initial curve
-    this.svgCurve.setAttribute('d', this.initialPath);
-  }
+  // Removed SVG curve setup
 
   toggleMenu() {
     this.isActive = !this.isActive;
@@ -382,54 +369,19 @@ class AnimatedNavigation {
     this.burger.classList.add('active');
     this.navMenu.classList.add('active');
     
-    // Animate SVG curve
-    this.animateSVGCurve(this.targetPath, 1000);
-    
-    // Stagger nav links animation is handled by CSS delays
+    // Set active nav link after animation starts
     setTimeout(() => {
       this.setActiveNavLink();
-    }, 300);
+    }, 200);
   }
 
   closeMenu() {
     this.isActive = false;
     this.burger.classList.remove('active');
     this.navMenu.classList.remove('active');
-    
-    // Animate SVG curve back
-    this.animateSVGCurve(this.initialPath, 800);
   }
 
-  animateSVGCurve(targetPath, duration) {
-    const currentPath = this.svgCurve.getAttribute('d');
-    
-    // Simple easing animation for SVG path
-    const startTime = performance.now();
-    
-    const animate = (currentTime) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      
-      // Cubic bezier easing: cubic-bezier(0.76, 0, 0.24, 1)
-      const easeProgress = this.cubicBezier(progress, 0.76, 0, 0.24, 1);
-      
-      // For simplicity, we'll just switch to target path at 50% progress
-      if (progress >= 0.5 && this.svgCurve.getAttribute('d') !== targetPath) {
-        this.svgCurve.setAttribute('d', targetPath);
-      }
-      
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
-    
-    requestAnimationFrame(animate);
-  }
-
-  cubicBezier(t, x1, y1, x2, y2) {
-    // Simplified cubic bezier calculation
-    return 3 * (1 - t) * (1 - t) * t * x1 + 3 * (1 - t) * t * t * x2 + t * t * t;
-  }
+  // Removed complex SVG animation functions
 
   setActiveIndicator(activeLink) {
     // Remove active class from all links
@@ -462,10 +414,10 @@ class AnimatedNavigation {
     // Don't prevent default to allow normal navigation
     this.setActiveIndicator(link);
     
-    // Close menu after a short delay
+    // Close menu immediately for snappier feel
     setTimeout(() => {
       this.closeMenu();
-    }, 300);
+    }, 150);
   }
 }
 

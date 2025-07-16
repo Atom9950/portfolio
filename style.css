@@ -257,7 +257,7 @@ padding-left: 2rem;
 }
 
 /* SVG Curve Animation */
-.nav-curve {
+/* .nav-curve {
   position: absolute;
   top: 0;
   left: -99px;
@@ -266,7 +266,7 @@ padding-left: 2rem;
   fill: rgb(0, 0, 0);
   stroke: none;
   z-index: -1;
-}
+} */
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
@@ -352,9 +352,9 @@ body.dark-mode .nav-menu {
   background-color: rgb(255, 255, 255);
 }
 
-body.dark-mode .nav-curve {
+/* body.dark-mode .nav-curve {
   fill: rgb(255, 255, 255)
-}
+} */
 
 body.dark-mode .burger::before,
 body.dark-mode .burger::after {
