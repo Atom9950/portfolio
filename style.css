@@ -94,10 +94,10 @@ padding-left: 2rem;
   border-radius: 50%;
   background-color: #000000;
   cursor: pointer;
-  display: flex; /* Default display, controlled by media queries */
+  display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .burger-button:hover {
@@ -242,8 +242,7 @@ padding-left: 2rem;
   width: 100%;
   justify-content: space-between;
   font-size: 12px;
-  gap: 30px;
-  flex-wrap: wrap;
+  gap: 15px;
 }
 
 .nav-footer a {
@@ -323,18 +322,71 @@ padding-left: 2rem;
   }
 }
 
-/* Hide burger button on desktop, show on mobile/tablet */
-@media screen and (min-width: 1200px) {
-  body .burger-button {
+/* Add to your existing CSS */
+/* @media screen and (min-width: 1200px) {
+  .burger-button {
     display: none !important;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .burger-button.visible {
+    display: flex !important;
+    opacity: 1;
+  }
+} */
+/* Add to your existing CSS */
+/* Add this to your CSS */
+/* .burger-button {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  z-index: 2000;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #000000;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+} */
+
+/* Desktop specific styles */
+@media screen and (min-width: 1200px) {
+  .burger-button {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+  }
+  
+  .burger-button.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
   }
 }
 
+/* Mobile styles - always visible */
 @media screen and (max-width: 1199px) {
-  body .burger-button {
-    display: flex !important;
+  .burger-button {
+    opacity: 1 !important;
+    transform: none !important;
+    pointer-events: auto !important;
   }
 }
+
+/* Dark mode adjustment */
+/* body.dark-mode .burger-button {
+  background-color: #ffffff;
+} */
+
+  /* Dark mode adjustment */
+  /* body.dark-mode .burger-button {
+    background-color: #ffffff;
+  } */
+/* } */
 
 /* Hide old hamburger nav on all screen sizes since we have the new animated one */
 #hamburger-nav {

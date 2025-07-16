@@ -711,3 +711,58 @@ document.addEventListener('DOMContentLoaded', () => {
   canvas.style.backgroundColor = 'transparent';
   ctx.globalCompositeOperation = 'lighter';
 });
+// Add this to your existing script.js
+function initBurgerButtonVisibility() {
+  const burgerButton = document.getElementById('burger-button');
+  const atomSection = document.getElementById('ai-chat');
+  
+  // Only run on desktop
+  if (window.innerWidth < 1200) return;
+  
+  let lastScrollPosition = window.scrollY;
+  let isVisible = false;
+  
+  const checkVisibility = () => {
+    const currentScrollPosition = window.scrollY;
+    const atomSectionTop = atomSection.getBoundingClientRect().top + window.scrollY;
+    const scrollDirection = currentScrollPosition > lastScrollPosition ? 'down' : 'up';
+    
+    // Show when scrolled down to atom section
+    if (currentScrollPosition > atomSectionTop - window.innerHeight/2) {
+      if (!isVisible) {
+        burgerButton.classList.add('visible');
+        isVisible = true;
+      }
+    } 
+    // Hide when scrolled up near top
+    else if (currentScrollPosition < 300 && scrollDirection === 'up') {
+      if (isVisible) {
+        burgerButton.classList.remove('visible');
+        isVisible = false;
+      }
+    }
+    
+    lastScrollPosition = currentScrollPosition;
+  };
+  
+  // Use GSAP's scroll trigger for smooth detection
+  ScrollTrigger.create({
+    start: "top top",
+    end: "max",
+    onUpdate: self => {
+      checkVisibility();
+    }
+  });
+  
+  // Initial check
+  checkVisibility();
+}
+
+// Call this after DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  // Your other initialization code...
+  initBurgerButtonVisibility();
+  
+  // Add resize observer to handle screen size changes
+  window.addEventListener('resize', initBurgerButtonVisibility);
+});
