@@ -633,9 +633,9 @@ section {
 .timeline-container::before {
   content: '';
   position: absolute;
-  top: 45px;              
+  top: 65px;              
   left: 50px;            
-  height: 47%;         
+  height: 45%;         
   width: 2px;
   background: #ccc;
   z-index: 1;
@@ -645,7 +645,7 @@ section {
 .timeline-container1::before {
   content: '';
   position: absolute;
-  top: 59%;             
+  top: 57%;             
   left: 50px;           
   height: 32%;          
   width: 2px;
@@ -2202,6 +2202,6 @@ body.dark-mode .footer-nav-title {
     color: #555555 !important;
 }
 
-body.dark-mode .tech-stack .tech-icon {
+body.dark-mode #projects .tech-stack .tech-icon {
     filter: invert(1);
 }
