@@ -766,3 +766,48 @@ document.addEventListener('DOMContentLoaded', () => {
   // Add resize observer to handle screen size changes
   window.addEventListener('resize', initBurgerButtonVisibility);
 });
+
+// --- Magnetic Effect Implementation ---
+function applyMagneticEffect(element) {
+  // Detect if SVG or burger button for extra strength
+  const isSVG = element.tagName.toLowerCase() === 'svg';
+  const isBurger = element.id === 'burger-button';
+  let strength;
+  if (isBurger) {
+    strength = 2.8; // Strongest for burger button
+  } else if (isSVG) {
+    strength = 2.2;
+  } else {
+    strength = 1.7;
+  }
+
+  let xTo = gsap.quickTo(element, "x", { duration: 0.4, ease: "elastic.out(1, 0.4)" });
+  let yTo = gsap.quickTo(element, "y", { duration: 0.4, ease: "elastic.out(1, 0.4)" });
+
+  function mouseMove(e) {
+    const rect = element.getBoundingClientRect();
+    const x = (e.clientX - (rect.left + rect.width / 2)) * strength;
+    const y = (e.clientY - (rect.top + rect.height / 2)) * strength;
+    xTo(x);
+    yTo(y);
+  }
+
+  function mouseLeave() {
+    xTo(0);
+    yTo(0);
+  }
+
+  element.addEventListener("mousemove", mouseMove);
+  element.addEventListener("mouseleave", mouseLeave);
+}
+
+// Call this after DOM is loaded
+// (Add to the main DOMContentLoaded handler, or as a new one)
+document.addEventListener('DOMContentLoaded', () => {
+  // ...other initialization code...
+
+  // Apply magnetic effect to all elements with the 'magnetic' class (SVGs and images)
+  document.querySelectorAll('.magnetic').forEach(el => {
+    applyMagneticEffect(el);
+  });
+});
