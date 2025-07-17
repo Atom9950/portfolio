@@ -3,7 +3,56 @@ import { GEMINI_API_KEY } from './config.js';
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
+// Hero Animation Variables
+let xPercent = 0;
+let direction = -1;
+
+function initHeroAnimation() {
+  const firstText = document.getElementById('firstText');
+  const secondText = document.getElementById('secondText');
+  const slider = document.getElementById('heroSlider');
+  
+  if (!firstText || !secondText || !slider) return;
+  
+  // Wait for fonts to load and elements to be rendered
+  setTimeout(() => {
+    // Set initial position of second text
+    gsap.set(secondText, {left: secondText.getBoundingClientRect().width});
+    
+    // ScrollTrigger animation
+    gsap.to(slider, {
+      scrollTrigger: {
+        trigger: document.documentElement,
+        scrub: 0.5,
+        start: 0,
+        end: window.innerHeight,
+        onUpdate: e => direction = e.direction * -1
+      },
+      x: "-500px",
+    });
+    
+    // Start the infinite animation
+    requestAnimationFrame(animate);
+  }, 100);
+  
+  function animate() {
+    if(xPercent < -100){
+      xPercent = 0;
+    } else if(xPercent > 0){
+      xPercent = -100;
+    }
+    
+    gsap.set(firstText, {xPercent: xPercent});
+    gsap.set(secondText, {xPercent: xPercent});
+    
+    requestAnimationFrame(animate);
+    xPercent += 0.1 * direction;
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  // Initialize hero animation
+  initHeroAnimation();
   // Initialize all animations
   initAnimations();
 });
