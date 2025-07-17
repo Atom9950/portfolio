@@ -1142,9 +1142,12 @@ article .icon {
 }
 
 #interests .title {
-  
-  margin-bottom: 40px;
-  color: #000000;
+    font-size: 60px;
+}
+@media (max-width: 768px) {
+    #interests .title {
+        font-size: 36px;
+    }
 }
 
 #interests .about-details-container {
@@ -2026,12 +2029,19 @@ body.dark-mode .preloader-svg path {
 #projects .project-item:hover .project-description {
     transform: translateX(10px);
 }
-#projects .project-title {
+.project-title {
     font-size: 60px;
-    margin: 0;
-    font-weight: 400;
-    transition: all 0.4s;
     color: #333;
+    text-align: center;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    margin: 0.5rem 0;
+    transition: all 0.4s;
+}
+@media (max-width: 768px) {
+    .project-title {
+        font-size: 36px !important;
+    }
 }
 #projects .project-description {
     transition: all 0.4s;
