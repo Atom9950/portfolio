@@ -3,12 +3,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 /* HERO SECTION */
+/* HERO SECTION */
 .hero-main {
   position: relative;
   display: flex;
   height: 100vh;
   overflow: hidden;
-  /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
 }
 
 .hero-background {
@@ -19,12 +19,32 @@
   height: 100%;
   object-fit: cover;
   z-index: -1;
+  /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50px;
+  transform: translateY(-50%);
+  color: white;
+  z-index: 10;
+}
+
+
+/* Mobile view (typically 768px or less) */
+@media (max-width: 768px) {
+  .hero-background {
+      object-position: center top;
+      content: url('./assets/hero1.jpg');
+  }
 }
 
 .hero-slider-container {
   position: absolute;
   top: calc(100vh - 350px);
   width: 100%;
+  overflow: hidden;
 }
 
 .hero-slider {
@@ -42,6 +62,7 @@
   font-family: "Poppins", sans-serif;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   letter-spacing: -2px;
+  display: inline-block;
 }
 
 .hero-slider p:nth-of-type(2) {
@@ -53,61 +74,85 @@
 /* Responsive Hero Section */
 @media screen and (max-width: 1400px) {
   .hero-slider p {
-    font-size: 180px;
+      font-size: 180px;
   }
   .hero-slider-container {
-    top: calc(100vh - 280px);
+      top: calc(100vh - 280px);
   }
 }
 
 @media screen and (max-width: 1200px) {
   .hero-slider p {
-    font-size: 150px;
+      font-size: 150px;
   }
   .hero-slider-container {
-    top: calc(100vh - 250px);
+      top: calc(100vh - 250px);
   }
 }
 
 @media screen and (max-width: 900px) {
   .hero-slider p {
-    font-size: 120px;
+      font-size: 120px;
   }
   .hero-slider-container {
-    top: calc(100vh - 200px);
+      top: calc(100vh - 200px);
   }
 }
 
 @media screen and (max-width: 600px) {
   .hero-slider p {
-    font-size: 80px;
-    padding-right: 30px;
+      font-size: 80px;
+      padding-right: 30px;
   }
   .hero-slider-container {
-    top: calc(100vh - 150px);
+      top: calc(100vh - 150px);
   }
 }
 
 @media screen and (max-width: 400px) {
   .hero-slider p {
-    font-size: 60px;
-    padding-right: 20px;
+      font-size: 60px;
+      padding-right: 20px;
   }
   .hero-slider-container {
-    top: calc(100vh - 120px);
+      top: calc(100vh - 120px);
   }
+}
+
+/* Demo content below to show scroll behavior */
+.demo-content {
+  height: 200vh;
+  background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.demo-content h2 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.demo-content p {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 600px;
+  text-align: center;
+  line-height: 1.6;
 }
 
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  background-color: #ffffff;
-  color: #000000;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
 }
 
 html {
@@ -158,6 +203,14 @@ a {
   text-decoration-color: white;
 }
 
+/* Contact section links: black in light mode, white in dark mode */
+#contact .nav-links a {
+  color: black;
+}
+body.dark-mode #contact .nav-links a {
+  color: white;
+}
+
 a:hover {
   color: grey;
   text-decoration: underline;
@@ -165,11 +218,18 @@ a:hover {
   text-decoration-color: rgb(181, 181, 181);
 }
 
-/* #desktop-nav {
-display: flex;
-justify-content: flex-start;
-padding-left: 10rem;
-} */
+#desktop-nav {
+  height: 9vh;
+  min-height: 56px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+#desktop-nav .logo {
+  line-height: 1.2;
+}
+#desktop-nav .nav-links {
+  align-items: center;
+}
 
 #hamburger-nav {
   position: fixed;
@@ -186,15 +246,20 @@ padding-left: 10rem;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
+#hamburger-nav .logo {
+  line-height: 1.2;
+  font-size: 1rem;
+}
 
 .logo {
-  font-size: 2rem;
+  font-size: 1rem;
   color: white;
 }
 
 .logo:hover {
   cursor: default;
 }
+
 
 
 
@@ -385,6 +450,7 @@ padding-left: 10rem;
 } */
 
 /* Responsive Design */
+
 @media screen and (max-width: 768px) {
   .nav-menu {
     width: 100vw; /* Full width on mobile */
@@ -494,16 +560,6 @@ padding-left: 10rem;
   }
 }
 
-/* Dark mode adjustment */
-/* body.dark-mode .burger-button {
-  background-color: #ffffff;
-} */
-
-  /* Dark mode adjustment */
-  /* body.dark-mode .burger-button {
-    background-color: #ffffff;
-  } */
-/* } */
 
 /* Hide old hamburger nav on all screen sizes since we have the new animated one */
 #hamburger-nav {
@@ -526,9 +582,6 @@ body.dark-mode .nav-menu {
   background-color: rgb(255, 255, 255);
 }
 
-/* body.dark-mode .nav-curve {
-  fill: rgb(255, 255, 255)
-} */
 
 body.dark-mode .burger::before,
 body.dark-mode .burger::after {
@@ -782,6 +835,7 @@ body.dark-mode .job-title {
   cursor: pointer;
   height: 2rem;
   transition: transform 0.3s ease-in-out;
+  filter: none;
 }
 
 .icon:hover {
@@ -1812,4 +1866,85 @@ body.dark-mode .preloader-text span:first-child {
 
 body.dark-mode .preloader-svg path {
   fill: white;
+}
+
+/* Add these styles to your existing CSS */
+.hero-content {
+  position: absolute;
+  top: 30%;
+  right: 100px;
+  transform: translateY(-50%);
+  color: white;
+  z-index: 1;
+  text-align: left;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 1.5;
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); */
+}
+
+.hero-title .arrow {
+  position: static;
+  display: flex;
+  justify-content: flex-end; /* Align arrow and text to right */
+  gap: 10px;
+}
+
+
+
+/* .hero-title .arrow::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+} */
+
+/* TABLET VIEW (900px and below) */
+@media screen and (max-width: 900px) {
+  .hero-content {
+    left: 10px;
+  }
+  .hero-title {
+    font-size: 26px;
+  }
+}
+
+/* SMALL TABLET (600px and below) */
+@media screen and (max-width: 600px) {
+  .hero-content {
+    left: 0px;
+    top: 22%;
+  }
+  .hero-title {
+    font-size: 28px;
+  }
+}
+
+/* MOBILE VIEW (400px and below) */
+@media screen and (max-width: 400px) {
+  .hero-content {
+   left: 10px;
+   top: 25%;
+  }
+  .hero-title {
+    font-size: 18px;
+  }
+  .designer-dev {
+    gap: 8px;
+  }
+}
+
+/* Ensure text doesn't touch screen edges on mobile */
+@media screen and (max-width: 350px) {
+  .hero-content {
+    left: 10px;
+    top: 25%;
+  }
 }

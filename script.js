@@ -3,58 +3,71 @@ import { GEMINI_API_KEY } from './config.js';
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-// Hero Animation Variables
+// HERO SLIDER ANIMATION (Scroll direction based)
+const firstText = document.getElementById('firstText');
+const secondText = document.getElementById('secondText');
+const slider = document.getElementById('heroSlider');
+
+// Ensure both texts match for seamless looping
+if (firstText && secondText) {
+  secondText.textContent = firstText.textContent;
+}
+
 let xPercent = 0;
 let direction = -1;
 
-function initHeroAnimation() {
-  const firstText = document.getElementById('firstText');
-  const secondText = document.getElementById('secondText');
-  const slider = document.getElementById('heroSlider');
-  
-  if (!firstText || !secondText || !slider) return;
-  
-  // Wait for fonts to load and elements to be rendered
-  setTimeout(() => {
-    // Set initial position of second text
-    gsap.set(secondText, {left: secondText.getBoundingClientRect().width});
-    
-    // ScrollTrigger animation
-    gsap.to(slider, {
-      scrollTrigger: {
-        trigger: document.documentElement,
-        scrub: 0.5,
-        start: 0,
-        end: window.innerHeight,
-        onUpdate: e => direction = e.direction * -1
-      },
-      x: "-500px",
-    });
-    
-    // Start the infinite animation
-    requestAnimationFrame(animate);
-  }, 100);
-  
-  function animate() {
-    if(xPercent < -100){
-      xPercent = 0;
-    } else if(xPercent > 0){
-      xPercent = -100;
-    }
-    
-    gsap.set(firstText, {xPercent: xPercent});
-    gsap.set(secondText, {xPercent: xPercent});
-    
-    requestAnimationFrame(animate);
-    xPercent += 0.1 * direction;
-  }
+gsap.registerPlugin(ScrollTrigger);
+
+// Set initial position of second text
+if (secondText) {
+  gsap.set(secondText, {
+    left: secondText.getBoundingClientRect().width
+  });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Initialize hero animation
-  initHeroAnimation();
-  // Initialize all animations
-  initAnimations();
+// ScrollTrigger setup
+if (slider) {
+  gsap.to(slider, {
+    scrollTrigger: {
+      trigger: document.documentElement,
+      scrub: 0.5,
+      start: 0,
+      end: window.innerHeight,
+      onUpdate: e => direction = e.direction * -1
+    },
+    x: "-500px",
+  });
+}
+
+// Animation function
+const animateHeroSlider = () => {
+  // Reset position when it goes too far
+  if (xPercent < -100) {
+    xPercent = 0;
+  } else if (xPercent > 0) {
+    xPercent = -100;
+  }
+
+  // Apply transform to both text elements
+  if (firstText && secondText) {
+    gsap.set(firstText, { xPercent: xPercent });
+    gsap.set(secondText, { xPercent: xPercent });
+  }
+
+  // Continue animation
+  requestAnimationFrame(animateHeroSlider);
+  // Update xPercent based on direction
+  xPercent += 0.1 * direction;
+};
+
+requestAnimationFrame(animateHeroSlider);
+
+window.addEventListener('resize', () => {
+  if (secondText) {
+    gsap.set(secondText, {
+      left: secondText.getBoundingClientRect().width
+    });
+  }
 });
 
 function initAnimations() {
@@ -221,6 +234,7 @@ workExperienceAnimation();
 
 // Chat functionality with Gemini API integration
 document.addEventListener('DOMContentLoaded', () => {
+  initAnimations(); // Ensure all GSAP section animations are initialized
   const chatMessages = document.getElementById('chat-messages');
   const userInput = document.getElementById('user-input');
   const sendButton = document.getElementById('send-button');
@@ -858,5 +872,66 @@ document.addEventListener('DOMContentLoaded', () => {
   // Apply magnetic effect to all elements with the 'magnetic' class (SVGs and images)
   document.querySelectorAll('.magnetic').forEach(el => {
     applyMagneticEffect(el);
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const nav = document.querySelector('nav');
+  const hamburgerNav = document.getElementById('hamburger-nav');
+  const heroSection = document.querySelector('.hero-section');
+  const burgerButton = document.querySelector('.burger-button');
+
+  function adjustLayout() {
+    // Desktop nav
+    if (nav) {
+      nav.style.position = 'absolute';
+      nav.style.top = '0';
+      nav.style.left = '0';
+      nav.style.right = '0';
+      nav.style.zIndex = '10';
+    }
+
+    // Mobile nav (scrolls with page)
+    if (hamburgerNav) {
+      hamburgerNav.style.position = 'absolute';
+      hamburgerNav.style.top = '0';
+      hamburgerNav.style.left = '0';
+      hamburgerNav.style.right = '0';
+      hamburgerNav.style.zIndex = '10';
+    }
+
+    // Burger button stays fixed
+    if (burgerButton) {
+      burgerButton.style.position = 'fixed';
+      burgerButton.style.top = '20px';
+      burgerButton.style.right = '20px';
+      burgerButton.style.zIndex = '2000';
+    }
+
+    // Hero section adjustment
+    if (heroSection) {
+      const navHeight = window.innerWidth >= 1200 ? 
+        (nav ? nav.offsetHeight : 0) : 
+        (hamburgerNav ? hamburgerNav.offsetHeight : 0);
+      
+      heroSection.style.position = 'relative';
+      heroSection.style.zIndex = '20';
+      heroSection.style.marginTop = `-${navHeight}px`;
+    }
+  }
+
+  adjustLayout();
+  window.addEventListener('resize', adjustLayout);
+
+  // Optional scroll effect
+  window.addEventListener('scroll', function() {
+    const scrollPosition = window.scrollY;
+    const currentNav = window.innerWidth >= 1200 ? nav : hamburgerNav;
+    
+    if (currentNav) {
+      currentNav.style.background = scrollPosition > 50 ? 
+        'rgba(255, 255, 255, 0.2)' : 
+        'rgba(255, 255, 255, 0.1)';
+    }
   });
 });
