@@ -1632,7 +1632,7 @@ body.dark-mode #experience .details-container p {
 }
 
 body.dark-mode .nav-links a {
-  color: #000 !important;
+  color: #ffffff !important;
 }
 body.dark-mode .logo {
     color: #000 !important;
@@ -2214,4 +2214,111 @@ body.dark-mode .footer-nav-title {
 
 body.dark-mode #projects .tech-stack .tech-icon {
     filter: invert(1);
+}
+
+/* Text Reveal Animation Styles */
+.section__text__p1, 
+.title,
+.experience-sub-title,
+.project-title,
+.project-description,
+.timeline-content h3,
+.timeline-content p,
+.details-container h3,
+.details-container p,
+.text-container p,
+.hero-title span {
+    overflow: hidden;
+}
+
+.line-mask {
+    overflow: hidden;
+    display: inline-block;
+}
+
+.line-mask span {
+    display: inline-block;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+body.dark-mode .line-mask span {
+    color: white !important;
+}
+
+#about .details-container p,
+#about .about-details-container p,
+#about .text-container p {
+  margin: 0 0 1rem 0;
+  line-height: 1.7;
+  word-break: break-word;
+  white-space: pre-line;
+}
+
+#about .text-container p {
+  margin-bottom: 0;
+}
+
+#about .details-container br,
+#about .about-details-container br,
+#about .text-container br {
+  display: block;
+  content: "";
+  margin-top: 0.5em;
+}
+
+/* Add spacing between revealed words */
+.line-mask {
+  margin-right: 0.18em;
+}
+
+/* Prevent .line-mask from breaking lines awkwardly */
+.line-mask {
+  white-space: pre-line;
+}
+
+/* Ensure paragraphs in About section have correct spacing on mobile */
+@media (max-width: 768px) {
+  #about .details-container p,
+  #about .about-details-container p,
+  #about .text-container p {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+}
+
+#about .details-container {
+  padding: 0.7rem 1rem;
+  min-width: 140px;
+  font-size: 0.98rem;
+  line-height: 1.4;
+}
+
+#about .details-container h3 {
+  margin-bottom: 0.4rem;
+  font-size: 1.1rem;
+}
+
+#about .details-container p {
+  margin-bottom: 0.2rem;
+  font-size: 0.98rem;
+  line-height: 1.4;
+}
+
+#about .details-container img.icon {
+  height: 1.5rem;
+  margin-bottom: 0.3rem;
+}
+
+@media (max-width: 768px) {
+  #about .details-container {
+    padding: 0.5rem 0.7rem;
+    font-size: 0.93rem;
+  }
+  #about .details-container h3 {
+    font-size: 1rem;
+  }
+  #about .details-container p {
+    font-size: 0.93rem;
+  }
 }

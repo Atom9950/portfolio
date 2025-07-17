@@ -1023,3 +1023,101 @@ document.addEventListener('DOMContentLoaded', () => {
         new AnimatedProjects();
     }
 });
+
+// Text Reveal Animation
+function initTextReveal() {
+    // Select all elements that should have the reveal animation
+    const revealElements = [
+        ...document.querySelectorAll('.section__text__p1'),
+        ...document.querySelectorAll('.title'),
+        ...document.querySelectorAll('.experience-sub-title'),
+        ...document.querySelectorAll('.project-title'),
+        ...document.querySelectorAll('.project-description'),
+        ...document.querySelectorAll('.timeline-content h3'),
+        ...document.querySelectorAll('.timeline-content p'),
+        ...document.querySelectorAll('.details-container h3'),
+        ...document.querySelectorAll('.details-container p'),
+        ...document.querySelectorAll('.text-container p'),
+        ...document.querySelectorAll('.hero-title span')
+    ];
+
+    // For About section paragraphs and details-container p, animate the whole block, not word-by-word
+    const aboutParagraphs = [
+        ...document.querySelectorAll('#about .details-container p'),
+        ...document.querySelectorAll('#about .text-container p')
+    ];
+    aboutParagraphs.forEach(element => {
+        if (!element.classList.contains('line-mask')) {
+            element.innerHTML = `<span class="line-mask">${element.innerHTML}</span>`;
+        }
+    });
+
+    // For other elements, keep word-by-word animation
+    revealElements.forEach(element => {
+        // Skip if already handled above
+        if (aboutParagraphs.includes(element)) return;
+        if (element.querySelector('.line-mask')) return;
+        const text = element.textContent;
+        element.innerHTML = '';
+        const words = text.split(' ');
+        words.forEach(word => {
+            const wordSpan = document.createElement('span');
+            wordSpan.className = 'line-mask';
+            wordSpan.textContent = word + ' ';
+            element.appendChild(wordSpan);
+        });
+    });
+
+    // Animate the elements when they come into view
+    // Only enhance About section .line-mask elements
+    const aboutLineMasks = document.querySelectorAll('#about .line-mask');
+    aboutLineMasks.forEach((span, i) => {
+        gsap.set(span, { y: '100%', opacity: 0 });
+        ScrollTrigger.create({
+            trigger: span,
+            start: 'top 90%',
+            onEnter: () => {
+                gsap.to(span, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.5,
+                    ease: 'power3.out',
+                    delay: i * 0.12
+                });
+            }
+        });
+    });
+
+    // Animate other .line-mask elements as before
+    gsap.utils.toArray('.line-mask').forEach((span) => {
+        if (span.closest('#about')) return; // skip About section, already handled
+        gsap.set(span, { y: '100%' });
+        ScrollTrigger.create({
+            trigger: span,
+            start: 'top 80%',
+            onEnter: () => {
+                gsap.to(span, {
+                    y: 0,
+                    duration: 0.3,
+                    ease: 'power3.out'
+                });
+            }
+        });
+    });
+
+    // Hero title animation (special case)
+    const heroTitleSpans = document.querySelectorAll('.hero-title .line-mask');
+    heroTitleSpans.forEach((span, i) => {
+        gsap.to(span, {
+            y: 0,
+            duration: 1,
+            ease: 'power3.out',
+            delay: i * 0.2
+        });
+    });
+}
+
+// Call this after DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  initTextReveal();
+});
