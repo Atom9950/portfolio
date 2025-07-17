@@ -86,7 +86,7 @@
       font-size: 150px;
   }
   .hero-slider-container {
-      top: calc(100vh - 250px);
+      top: calc(100vh - 350px);
   }
 }
 
@@ -105,7 +105,7 @@
       padding-right: 30px;
   }
   .hero-slider-container {
-      top: calc(100vh - 150px);
+      top: calc(100vh - 300px);
   }
 }
 
@@ -1920,7 +1920,7 @@ body.dark-mode .preloader-svg path {
 @media screen and (max-width: 600px) {
   .hero-content {
     left: 0px;
-    top: 22%;
+    top: 15%;
   }
   .hero-title {
     font-size: 28px;
