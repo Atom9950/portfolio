@@ -498,23 +498,59 @@ document.querySelectorAll('.icon-container').forEach(container => {
 });
 
 // Dark mode functionality
-const darkModeToggle = document.getElementById("dark-mode-toggle");
-const body = document.body;
 
-const isDarkMode = localStorage.getItem("dark-mode") === "enabled";
+// --- Smooth Dark Mode Transition Overlay Implementation ---
+document.addEventListener('DOMContentLoaded', function() {
+  const darkModeToggle = document.getElementById('dark-mode-toggle');
+  const body = document.body;
+  let overlay = document.querySelector('.transition-overlay');
 
-if (isDarkMode) {
-  body.classList.add("dark-mode");
-  darkModeToggle.checked = true;
-}
+  // Create overlay if not present
+  if (!overlay) {
+    overlay = document.createElement('div');
+    overlay.className = 'transition-overlay';
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = '#121212';
+    overlay.style.zIndex = '10000';
+    overlay.style.pointerEvents = 'none';
+    overlay.style.opacity = '0';
+    overlay.style.transition = 'opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1)';
+    document.body.appendChild(overlay);
+  }
 
-darkModeToggle.addEventListener("change", () => {
-  if (darkModeToggle.checked) {
-    body.classList.add("dark-mode");
-    localStorage.setItem("dark-mode", "enabled");
-  } else {
-    body.classList.remove("dark-mode");
-    localStorage.setItem("dark-mode", "disabled");
+  // Check for saved preference
+  const isDarkMode = localStorage.getItem('dark-mode') === 'enabled';
+  if (isDarkMode) {
+    body.classList.add('dark-mode');
+    if (darkModeToggle) darkModeToggle.checked = true;
+  }
+
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener('change', function() {
+      if (this.checked) {
+        overlay.style.opacity = '1';
+        setTimeout(() => {
+          body.classList.add('dark-mode');
+          localStorage.setItem('dark-mode', 'enabled');
+          setTimeout(() => {
+            overlay.style.opacity = '0';
+          }, 400);
+        }, 100);
+      } else {
+        overlay.style.opacity = '1';
+        setTimeout(() => {
+          body.classList.remove('dark-mode');
+          localStorage.setItem('dark-mode', 'disabled');
+          setTimeout(() => {
+            overlay.style.opacity = '0';
+          }, 400);
+        }, 100);
+      }
+    });
   }
 });
 
