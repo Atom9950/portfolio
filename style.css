@@ -2201,3 +2201,7 @@ body.dark-mode .footer-brand-text {
 body.dark-mode .footer-nav-title {
     color: #555555 !important;
 }
+
+body.dark-mode .tech-stack .tech-icon {
+    filter: invert(1);
+}
