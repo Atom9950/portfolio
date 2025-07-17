@@ -1948,3 +1948,38 @@ body.dark-mode .preloader-svg path {
     top: 25%;
   }
 }
+
+@media screen and (max-width: 768px) {
+  nav,
+  #hamburger-nav {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    min-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+  }
+  .burger-button {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    width: 60px;
+    height: 60px;
+  }
+  .nav-links {
+    font-size: 1.1rem;
+    gap: 1rem;
+  }
+  #hamburger-nav {
+    padding-left: 0;
+  }
+}
