@@ -935,3 +935,91 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+// --- Animated Projects Modal & Cursor ---
+class AnimatedProjects {
+    constructor() {
+        this.modal = { active: false, index: 0 };
+        this.modalContainer = document.getElementById('modalContainer');
+        this.modalSlider = document.getElementById('modalSlider');
+        this.cursor = document.getElementById('cursor');
+        this.cursorLabel = document.getElementById('cursorLabel');
+        this.projectItems = document.querySelectorAll('.project-item');
+        this.init();
+    }
+    init() {
+        this.projectItems.forEach((item, index) => {
+            item.addEventListener('mouseenter', () => {
+                this.setModal(true, index);
+            });
+            item.addEventListener('mouseleave', () => {
+                this.setModal(false, index);
+            });
+            // Add click handler to open project link
+            item.addEventListener('click', () => {
+                const link = item.getAttribute('data-link');
+                if (link) {
+                    window.open(link, '_blank');
+                }
+            });
+        });
+        this.setupMouseTracking();
+    }
+    setModal(active, index) {
+        this.modal = { active, index };
+        if (active) {
+            this.modalContainer.classList.add('active');
+            this.cursor.classList.add('active');
+            this.cursorLabel.classList.add('active');
+            this.modalSlider.style.top = `${index * -100}%`;
+        } else {
+            this.modalContainer.classList.remove('active');
+            this.cursor.classList.remove('active');
+            this.cursorLabel.classList.remove('active');
+        }
+    }
+    setupMouseTracking() {
+        let mouseX = 0;
+        let mouseY = 0;
+        let modalX = 0;
+        let modalY = 0;
+        let cursorX = 0;
+        let cursorY = 0;
+        let cursorLabelX = 0;
+        let cursorLabelY = 0;
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        const animate = () => {
+            // Modal container animation (faster)
+            modalX += (mouseX - modalX) * 0.3;
+            modalY += (mouseY - modalY) * 0.3;
+            // Cursor animation (faster)
+            cursorX += (mouseX - cursorX) * 0.4;
+            cursorY += (mouseY - cursorY) * 0.4;
+            // Cursor label animation (faster)
+            cursorLabelX += (mouseX - cursorLabelX) * 0.5;
+            cursorLabelY += (mouseY - cursorLabelY) * 0.5;
+            if (this.modalContainer) {
+                this.modalContainer.style.left = modalX + 'px';
+                this.modalContainer.style.top = modalY + 'px';
+            }
+            if (this.cursor) {
+                this.cursor.style.left = cursorX + 'px';
+                this.cursor.style.top = cursorY + 'px';
+            }
+            if (this.cursorLabel) {
+                this.cursorLabel.style.left = cursorLabelX + 'px';
+                this.cursorLabel.style.top = cursorLabelY + 'px';
+            }
+            requestAnimationFrame(animate);
+        };
+        animate();
+    }
+}
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('modalContainer')) {
+        new AnimatedProjects();
+    }
+});

@@ -951,10 +951,11 @@ a.btn.btn-color-2:hover {
 }
 
 .experience-sub-title {
-  color: rgb(85, 85, 85);
-  font-weight: 600;
-  font-size: 1.75rem;
-  margin-bottom: 2rem;
+    color: rgb(85, 85, 85);
+    font-weight: 600;
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
 }
 
 .experience-details-container {
@@ -993,7 +994,7 @@ article .icon {
 }
 
 #projects .title {
-  font-size: 2.5rem;
+  font-size: 60px;
   text-align: center;
   margin-bottom: 2rem;
 }
@@ -1982,4 +1983,192 @@ body.dark-mode .preloader-svg path {
   #hamburger-nav {
     padding-left: 0;
   }
+}
+
+/* --- Animated Projects Section Styles --- */
+#projects .projects-main {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+#projects .projects-body {
+    width: 1000px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#projects .project-item {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 100px;
+    border-top: 1px solid rgb(201, 201, 201);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+#projects .project-item:last-of-type {
+    border-bottom: 1px solid rgb(201, 201, 201);
+}
+#projects .project-item:hover {
+    opacity: 0.5;
+}
+#projects .project-item:hover .project-title {
+    transform: translateX(-10px);
+}
+#projects .project-item:hover .project-description {
+    transform: translateX(10px);
+}
+#projects .project-title {
+    font-size: 60px;
+    margin: 0;
+    font-weight: 400;
+    transition: all 0.4s;
+    color: #333;
+}
+#projects .project-description {
+    transition: all 0.4s;
+    font-weight: 300;
+    color: #666;
+}
+#projects .modal-container {
+    height: 350px;
+    width: 400px;
+    position: fixed;
+    background-color: white;
+    overflow: hidden;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    border-radius: 10px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    transform: scale(0) translate(-50%, -50%);
+    transition: all 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+}
+#projects .modal-container.active {
+    transform: scale(1) translate(-50%, -50%);
+}
+#projects .modal-slider {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transition: top 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+#projects .modal {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+#projects .modal img {
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+#projects .cursor, #projects .cursor-label {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #2c2c2c;
+    color: white;
+    position: fixed;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 300;
+    pointer-events: none;
+    transform: scale(0) translate(-50%, -50%);
+    transition: all 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+}
+#projects .cursor-label {
+    background-color: transparent;
+}
+#projects .cursor.active, #projects .cursor-label.active {
+    transform: scale(1) translate(-50%, -50%);
+}
+#projects .tech-stack {
+    display: flex;
+    gap: 10px;
+    margin-top: 1rem;
+}
+#projects .tech-icon {
+    width: 24px;
+    height: 24px;
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    #projects .project-item {
+        padding: 30px 20px;
+    }
+    #projects .project-title {
+        font-size: 36px;
+    }
+    #projects .modal-container {
+        width: 300px;
+        height: 250px;
+    }
+}
+
+body.dark-mode #projects .cursor,
+body.dark-mode #projects .cursor-label {
+    background-color: #fff;
+    color: #000;
+}
+
+body.dark-mode #projects .cursor-label {
+    background-color: transparent !important;
+    color: #000;
+    border: none;
+}
+
+/* === GLOBAL FONT STYLES (Unified with Projects Section) === */
+html, body {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    color: #333;
+    font-weight: 400;
+}
+
+h1, .title {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    color: #333;
+    font-size: 60px;
+}
+
+@media (max-width: 768px) {
+    h1, .title {
+        font-size: 36px;
+    }
+}
+
+h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    color: #333;
+}
+
+p, .section__text__p1, .section__text__p2, .project-description {
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-weight: 300;
+    color: #666;
+}
+
+/* Dark mode overrides for unified font styles */
+body.dark-mode, body.dark-mode h1, body.dark-mode .title, body.dark-mode h2, body.dark-mode h3, body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
+    color: #fff !important;
+}
+body.dark-mode p, body.dark-mode .section__text__p1, body.dark-mode .section__text__p2, body.dark-mode .project-description {
+    color: #ccc !important;
 }
