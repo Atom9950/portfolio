@@ -232,9 +232,26 @@ workExperienceAnimation();
 
 
 
+// Location Badge Interactive Effect
+function initLocationBadge() {
+  const locationBadge = document.querySelector('.location-badge');
+  const globeIcon = document.querySelector('.globe-icon');
+  
+  if (locationBadge && globeIcon) {
+    locationBadge.addEventListener('mouseenter', () => {
+      globeIcon.style.animationDuration = '2s';
+    });
+    
+    locationBadge.addEventListener('mouseleave', () => {
+      globeIcon.style.animationDuration = '8s';
+    });
+  }
+}
+
 // Chat functionality with Gemini API integration
 document.addEventListener('DOMContentLoaded', () => {
   initAnimations(); // Ensure all GSAP section animations are initialized
+  initLocationBadge(); // Initialize location badge interactions
   const chatMessages = document.getElementById('chat-messages');
   const userInput = document.getElementById('user-input');
   const sendButton = document.getElementById('send-button');
