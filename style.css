@@ -146,6 +146,8 @@
     font-weight: 400;
     line-height: 1.3;
     letter-spacing: 0.2px;
+    font-family: 'Poppins', sans-serif;
+    color: white;
 }
 
 .globe-container {
@@ -161,8 +163,8 @@
 }
 
 .globe-icon {
-    width: 28px;
-    height: 28px;
+    width: 40px;
+    height: 40px;
     color: white;
     animation: rotateGlobe 8s linear infinite;
 }
@@ -179,10 +181,12 @@
 /* Location Badge Mobile Responsive */
 @media (max-width: 768px) {
     .location-badge {
-        top: 100px;
+      background-color: transparent;
+        top: 70px;
         left: auto;
         right: 0px;
         padding: 12px 15px 12px 30px;
+        flex-direction: row-reverse;
         border-radius: 50px;
         border-top-right-radius: 0px;
         border-bottom-right-radius: 0px;
@@ -190,17 +194,21 @@
         border-bottom-left-radius: 50px;
     }
     .location-text {
+      display: none;
         font-size: 12px;
-        margin-right: 12px;
+        margin-right: 0px;
         line-height: 1.2;
     }
     .globe-container {
-        width: 40px;
-        height: 40px;
+        background-color: transparent;
     }
     .globe-icon {
-        width: 20px;
-        height: 20px;
+        width: 40px;
+        height: 40px;
+        margin-right: 150px;
+    }
+    body.dark-mode .globe-icon {
+      filter: brightness(0) invert(0);
     }
 }
 
