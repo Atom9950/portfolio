@@ -1055,6 +1055,170 @@ a.btn.btn-color-2:hover {
   margin: auto 0;
 }
 
+/* STACKING CARDS EXPERIENCE */
+.stacking-cards-main {
+  margin-top: 20vh;
+  margin-bottom: 20vh;
+  position: relative;
+}
+
+.stacking-card-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+}
+
+.stacking-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 500px;
+  width: min(1000px, 90vw);
+  border-radius: 2rem;
+  padding: 50px;
+  transform-origin: top center;
+  transition: transform 0.1s ease-out;
+}
+
+.stacking-card h2 {
+  text-align: center;
+  margin: 0;
+  font-size: clamp(24px, 3vw, 28px);
+  color: #000;
+  font-weight: 600;
+}
+
+.stacking-card-body {
+  display: flex;
+  height: 100%;
+  margin-top: 50px;
+  gap: 50px;
+}
+
+.stacking-description {
+  width: 40%;
+  position: relative;
+  top: 10%;
+  color: #000;
+}
+
+/* Dark mode compatibility for stacking cards */
+body.dark-mode .stacking-description {
+  color: #000;
+}
+
+body.dark-mode .stacking-description a {
+  color: #000;
+}
+
+body.dark-mode .stacking-arrow-icon {
+  fill: #000;
+}
+
+.stacking-description p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.stacking-description p::first-letter {
+  font-size: 28px;
+  font-weight: bold;
+  float: left;
+  line-height: 1;
+  margin-right: 5px;
+  margin-top: 2px;
+}
+
+.stacking-description .link-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.stacking-description a {
+  font-size: 12px;
+  text-decoration: underline;
+  color: #000;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.stacking-description a:hover {
+  opacity: 0.7;
+}
+
+.stacking-arrow-icon {
+  width: 22px;
+  height: 12px;
+  fill: #000;
+}
+
+.stacking-image-container {
+  position: relative;
+  width: 60%;
+  height: 100%;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+.stacking-image-inner {
+  width: 100%;
+  height: 100%;
+  transform-origin: center;
+  transition: transform 0.1s ease-out;
+}
+
+.stacking-image-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Responsive design for stacking cards */
+@media (max-width: 768px) {
+  .stacking-card {
+    width: 95vw;
+    height: 600px;
+    padding: 30px;
+  }
+  
+  .stacking-card-body {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .stacking-description, 
+  .stacking-image-container {
+    width: 100%;
+  }
+  
+  .stacking-description {
+    top: 0;
+  }
+  
+  .stacking-image-container {
+    height: 200px;
+  }
+}
+
+/* Loading state for stacking cards */
+.stacking-card {
+  opacity: 0;
+  animation: stackingFadeIn 0.6s ease forwards;
+}
+
+@keyframes stackingFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
 /* EXPERIENCE SECTION */
 
 #experience {
@@ -1317,8 +1481,7 @@ article .icon {
   display: flex;
   justify-content: center;
   border-radius: 2rem;
-  border: rgb(53, 53, 53) 0.1rem solid;
-  border-color: rgb(163, 163, 163);
+  border: rgb(163, 163, 163) 2px solid;
   background: rgb(250, 250, 250);
   margin: 2rem auto;
   padding: 0.5rem;
@@ -1764,6 +1927,7 @@ body.dark-mode .icon-container{
 body.dark-mode .contact-info-upper-container {
   background-color: #121212;
   color: #ffffff;
+  border-color: white;
 }
 
 #ai-chat {
