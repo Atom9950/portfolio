@@ -2136,12 +2136,12 @@ body.dark-mode .preloader-svg path {
     justify-content: space-between;
     align-items: center;
     padding: 50px 100px;
-    border-top: 1px solid rgb(201, 201, 201);
+    border-top: 2px solid rgb(201, 201, 201);
     cursor: pointer;
     transition: all 0.2s;
 }
 #projects .project-item:last-of-type {
-    border-bottom: 1px solid rgb(201, 201, 201);
+    border-bottom: 2px solid rgb(201, 201, 201);
 }
 #projects .project-item:hover {
     opacity: 0.5;
@@ -2267,6 +2267,12 @@ body.dark-mode #projects .cursor-label {
     background-color: transparent !important;
     color: #000;
     border: none;
+}
+body.dark-mode #projects .project-item{
+  border-top: 2px solid rgb(255, 255, 255);
+}
+body.dark-mode #projects .project-item:last-of-type {
+    border-bottom: 2px solid rgb(255, 255, 255);
 }
 
 /* === GLOBAL FONT STYLES (Unified with Projects Section) === */
