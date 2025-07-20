@@ -2623,3 +2623,121 @@ body.dark-mode .line-mask span {
   }
 }
 
+/* TEXT PARALLAX SECTION */
+.text-parallax-section {
+  overflow: hidden;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  /* background: #000; */
+  color: white;
+  padding: 0;
+}
+
+.parallax-spacer {
+  height: 20vh;
+}
+
+.parallax-container {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.parallax-slide {
+  position: relative;
+  display: flex;
+  white-space: nowrap;
+  will-change: transform;
+  width: calc(100% + 4rem);
+  margin: 0;
+  padding: 0;
+  margin-left: -2rem;
+}
+
+.parallax-phrase {
+  padding: 0;
+  margin: 0; /* Add this to remove any default margin */
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.parallax-text {
+  font-size: 7.5rem;
+  font-weight: 600;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #333333 0%, #666666 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* Ensure text starts at the edge */
+  padding-left: 0;
+}
+body.dark-mode .parallax-text {
+  background: linear-gradient(135deg, #ffffff 0%, #666666 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-family: "Poppins", sans-serif;
+}
+
+.parallax-image {
+  position: relative;
+  height: 7.5vw;
+  aspect-ratio: 4/2;
+  border-radius: 50px;
+  overflow: hidden;
+  display: block;
+}
+
+.parallax-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .parallax-text {
+    font-size: 12vw;
+  }
+    
+  .parallax-image {
+    height: 12vw;
+  }
+    
+  .parallax-phrase {
+    padding: 0;
+    gap: 0.75rem;
+    margin: 0;
+  }
+  
+  .parallax-slide {
+    margin-left: -1rem;
+    width: calc(100% + 2rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .parallax-text {
+    font-size: 15vw;
+  }
+    
+  .parallax-image {
+    height: 15vw;
+  }
+    
+  .parallax-phrase {
+    padding: 0;
+    gap: 0.5rem;
+    margin: 0;
+  }
+  
+  .parallax-slide {
+    margin-left: -0.5rem;
+    width: calc(100% + 1rem);
+  }
+}

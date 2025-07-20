@@ -1170,7 +1170,47 @@ function initTextReveal() {
     });
 }
 
+// TEXT PARALLAX EFFECT
+function initTextParallax() {
+    const parallaxContainer = document.getElementById('parallax-container');
+    if (!parallaxContainer) return;
+
+    const slides = parallaxContainer.querySelectorAll('.parallax-slide');
+    
+    slides.forEach((slide, index) => {
+        const direction = slide.dataset.direction;
+        const leftOffset = slide.dataset.left;
+        
+        // Set initial position
+        gsap.set(slide, { 
+            left: leftOffset,
+            x: direction === 'right' ? '-100%' : '0%'
+        });
+        
+        // Create scroll-triggered animation
+        gsap.to(slide, {
+            x: direction === 'right' ? '0%' : '-100%',
+            ease: 'none',
+            scrollTrigger: {
+                trigger: parallaxContainer,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 1,
+                onUpdate: (self) => {
+                    // Additional smooth movement based on scroll progress
+                    const progress = self.progress;
+                    const moveAmount = direction === 'right' ? 
+                        progress * 100 - 100 : 
+                        progress * -100;
+                    gsap.set(slide, { x: `${moveAmount}%` });
+                }
+            }
+        });
+    });
+}
+
 // Call this after DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   initTextReveal();
+  initTextParallax();
 });
