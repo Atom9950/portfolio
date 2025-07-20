@@ -2741,3 +2741,71 @@ body.dark-mode .parallax-text {
     width: calc(100% + 1rem);
   }
 }
+
+/* SVG TEXT ANIMATION SECTION */
+.svg-text-section {
+  padding: 100px 0;
+  background: transparent;
+  overflow: hidden;
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+}
+
+body.dark-mode .svg-text-section {
+  background: transparent;
+}
+
+.svg-container {
+  width: 100%;
+  max-width: 100%; /* Changed from 1200px to 100% */
+  margin: 0;
+  padding: 0; /* Removed the padding */
+}
+
+.svg-container svg {
+  width: 100%;
+  height: auto;
+  margin-bottom: 40px;
+}
+
+.svg-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 8px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.text-path {
+  font-family: 'Poppins', sans-serif;
+  font-size: 8px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .svg-text-section {
+    padding: 60px 0;
+  }
+  
+  .svg-text,
+  .text-path {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  .svg-text-section {
+    padding: 40px 0;
+  }
+  
+  .svg-text,
+  .text-path {
+    font-size: 5x;
+    letter-spacing: 1px;
+  }
+}

@@ -570,6 +570,32 @@
       </div>
     </section>
 
+    <!-- SVG TEXT ANIMATION -->
+    <section id="svg-text-animation" class="svg-text-section">
+      <div class="svg-container" id="svg-container">
+        <svg class="w-full mb-40" viewBox="0 0 250 90">
+          <defs>
+            <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#333333;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#333333;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#666666;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="textGradientDark" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+              <stop offset="50%" style="stop-color:#ffffff;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#666666;stop-opacity:1" />
+            </linearGradient>
+          </defs>
+          <path fill="none" id="curve" d="m0,88.5c61.37,0,61.5-68,126.5-68,58,0,51,68,123,68"/>
+          <text class="svg-text" fill="url(#textGradient)">
+            <textPath class="text-path" startOffset="0%" href="#curve">Thank you for visiting</textPath>
+            <textPath class="text-path" startOffset="60%" href="#curve">Thank you for visiting</textPath>
+            <textPath class="text-path" startOffset="120%" href="#curve">Thank you for visiting</textPath>
+          </text>
+        </svg>
+      </div>
+    </section>
+
     <!-- STICKY FOOTER -->
 
 <div class="sticky-footer-container">

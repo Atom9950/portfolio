@@ -1209,8 +1209,62 @@ function initTextParallax() {
     });
 }
 
+// SVG TEXT ANIMATION
+function initSVGTextAnimation() {
+    const svgContainer = document.getElementById('svg-container');
+    const textPaths = document.querySelectorAll('.text-path');
+    const svgText = document.querySelector('.svg-text');
+    
+    if (!svgContainer || textPaths.length === 0) return;
+    
+    // Function to update gradient based on dark mode
+    function updateGradient() {
+        if (svgText) {
+            const isDarkMode = document.body.classList.contains('dark-mode');
+            svgText.setAttribute('fill', isDarkMode ? 'url(#textGradientDark)' : 'url(#textGradient)');
+        }
+    }
+    
+    // Initial gradient setup
+    updateGradient();
+    
+    // Listen for dark mode changes
+    const observer = new MutationObserver(updateGradient);
+    observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    
+    // Create ScrollTrigger for the SVG text animation
+    ScrollTrigger.create({
+        trigger: svgContainer,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 1,
+        onUpdate: (self) => {
+            const progress = self.progress;
+            
+            // Animate each text path with proper spacing to avoid overlap
+            textPaths.forEach((path, index) => {
+                // Use larger spacing to prevent overlap (60% instead of 40%)
+                const baseOffset = index * 60; // 60% spacing between texts
+                const scrollOffset = progress * 60; // Move 60% based on scroll
+                const newOffset = -60 + baseOffset + scrollOffset;
+                
+                // Ensure the offset wraps around properly with 180% total range
+                let wrappedOffset = newOffset % 180;
+                if (wrappedOffset < -60) {
+                    wrappedOffset += 180;
+                } else if (wrappedOffset > 120) {
+                    wrappedOffset -= 180;
+                }
+                
+                path.setAttribute('startOffset', `${wrappedOffset}%`);
+            });
+        }
+    });
+}
+
 // Call this after DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   initTextReveal();
   initTextParallax();
+  initSVGTextAnimation();
 });
