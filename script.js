@@ -722,7 +722,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let mouseY = 0;
   const particles = [];
   const particleCount = 150;
-  const color = '#FFD700';
+  const color = '#cccccc';
 
   // Set canvas size
   function resizeCanvas() {
