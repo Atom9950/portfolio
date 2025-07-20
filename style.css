@@ -2339,17 +2339,24 @@ body.dark-mode .preloader-svg path {
     height: 350px;
     width: 400px;
     position: fixed;
-    background-color: white;
+    background-color: #fafafa;
     overflow: hidden;
     pointer-events: none;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 1000;
-    border-radius: 10px;
+    border-radius: 2rem;
+    border: solid 2px #a3a3a3;
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
     transform: scale(0) translate(-50%, -50%);
     transition: all 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+}
+body.dark-mode #projects .modal-container {
+    background-color: #121212;
+    border:solid 2px #fff;
+    box-shadow: 0 20px 50px rgba(255, 255, 255, 0.08);
+    color: #fff;
 }
 #projects .modal-container.active {
     transform: scale(1) translate(-50%, -50%);
