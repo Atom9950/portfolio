@@ -686,7 +686,9 @@ body.dark-mode #desktop-nav .nav-links a:hover {
 
 /* Dark Mode Support */
 body.dark-mode .burger-button {
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 body.dark-mode .nav-menu {
