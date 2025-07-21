@@ -2096,7 +2096,7 @@ body.dark-mode #user-input:disabled {
   justify-content: center;
   position: fixed;
   z-index: 9999;
-  background-color: #141516;
+  background-color: #000000;
   top: 0;
   left: 0;
 }
@@ -2110,7 +2110,7 @@ body.dark-mode #user-input:disabled {
 }
 
 .preloader-svg path {
-  fill: #141516;
+  fill: #000000;
 }
 
 .preloader-text {
