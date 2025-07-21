@@ -947,7 +947,7 @@ body.dark-mode .job-title {
 .icon {
   cursor: pointer;
   height: 2rem;
-  transition: transform 0.3s ease-in-out;
+  /* transition: transform 0.3s ease-in-out; */
   filter: none;
 }
 
@@ -1378,7 +1378,7 @@ article .icon {
   width: 30px;
   height: 30px;
   filter: grayscale(100%);
-  transition: all 0.3s ease;
+  /* transition: all 0.3s ease; */
 }
 
 .tech-icon:hover {
