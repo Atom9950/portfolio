@@ -1811,7 +1811,7 @@ body.dark-mode .footer-copyright{
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(63, 62, 62, 0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   transition: 0.4s;
@@ -1829,9 +1829,15 @@ body.dark-mode .footer-copyright{
   transition: 0.4s;
   border-radius: 50%;
 }
+body.dark-mode .slider:before {
+  background-color: #111111;
+}
+
 
 input:checked + .slider {
-  background-color: #6b6c6c;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 input:checked + .slider:before {
