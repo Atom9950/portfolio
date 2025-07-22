@@ -913,6 +913,12 @@ function applyMagneticEffect(element) {
     yTo(0);
   }
 
+  // Store listeners for potential removal
+  element._magneticListeners = {
+    mouseMove: mouseMove,
+    mouseLeave: mouseLeave
+  };
+
   element.addEventListener("mousemove", mouseMove);
   element.addEventListener("mouseleave", mouseLeave);
 }
@@ -922,10 +928,36 @@ function applyMagneticEffect(element) {
 document.addEventListener('DOMContentLoaded', () => {
   // ...other initialization code...
 
+  // Function to apply magnetic effects based on screen size
+  function initializeMagneticEffects() {
+    document.querySelectorAll('.magnetic').forEach(el => {
+      const isToggleSwitch = el.classList.contains('toggle-switch');
+      const isMobile = window.innerWidth <= 768;
+      
+      // Remove existing magnetic effect listeners if they exist
+      if (el._magneticListeners) {
+        el.removeEventListener("mousemove", el._magneticListeners.mouseMove);
+        el.removeEventListener("mouseleave", el._magneticListeners.mouseLeave);
+        delete el._magneticListeners;
+        // Reset position
+        gsap.set(el, { x: 0, y: 0 });
+      }
+      
+      // Skip magnetic effect for toggle switch on mobile
+      if (isToggleSwitch && isMobile) {
+        return;
+      }
+      
+      applyMagneticEffect(el);
+    });
+  }
+
   // Apply magnetic effect to all elements with the 'magnetic' class (SVGs and images)
-  document.querySelectorAll('.magnetic').forEach(el => {
-    applyMagneticEffect(el);
-  });
+  // Exclude dark mode toggle on mobile screens
+  initializeMagneticEffects();
+  
+  // Re-initialize on window resize
+  window.addEventListener('resize', initializeMagneticEffects);
 });
 
 document.addEventListener('DOMContentLoaded', function() {
