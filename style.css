@@ -949,6 +949,7 @@ body.dark-mode .job-title {
   height: 2rem;
   /* transition: transform 0.3s ease-in-out; */
   filter: none;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .icon:hover {
@@ -1378,6 +1379,7 @@ article .icon {
   height: 30px;
   filter: grayscale(100%);
   /* transition: all 0.3s ease; */
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .tech-icon:hover {
@@ -1453,6 +1455,7 @@ article .icon {
   width: 50px;
   height: 50px;
   margin-bottom: 10px;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   
 }
 
@@ -1795,6 +1798,7 @@ body.dark-mode .footer-copyright{
   display: inline-block;
   width: 60px;
   height: 34px;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .toggle-switch input {
@@ -2009,6 +2013,7 @@ body.dark-mode .contact-info-upper-container {
 .send-icon {
   height: 20px; 
   width: 20px; 
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 /* Dark mode styles */
@@ -2420,6 +2425,7 @@ body.dark-mode #projects .modal-container {
     width: 24px;
     height: 24px;
     opacity: 0.7;
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 @media (max-width: 768px) {
@@ -2615,6 +2621,7 @@ body.dark-mode .line-mask span {
 #about .details-container img.icon {
   height: 1.5rem;
   margin-bottom: 0.3rem;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 @media (max-width: 768px) {
