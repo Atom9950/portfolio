@@ -952,9 +952,8 @@ body.dark-mode .job-title {
 }
 
 .icon:hover {
-  transform: scale(0.9);
+  transform: scale(1.05);
 }
-
 /* BUTTONS */
 
 a.btn.btn-color-2:hover {
