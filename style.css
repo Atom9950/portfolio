@@ -871,6 +871,28 @@ body.dark-mode .job-title {
   color: #ffffff;
 }
 
+/* Prevent work experience images from being inverted in dark mode */
+/* body.dark-mode #work-experience .icon {
+  filter: none;
+} */
+
+body.dark-mode #work-experience .company-logo {
+  filter: none;
+}
+
+body.dark-mode #work-experience .tech-icon {
+  filter: none;
+}
+
+/* Ensure work experience images are always visible */
+#work-experience .company-logo,
+#work-experience .icon,
+#work-experience .tech-icon {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: inline-block !important;
+}
+
 
 #profile {
   display: flex;
