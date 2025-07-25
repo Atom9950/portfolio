@@ -813,6 +813,7 @@ section {
   object-fit: contain;
   border-radius: 50%;
   margin-right: 15px;
+  margin-bottom: 30px;
   border: 1px solid #eee;
   padding: 5px;
   background: white;
