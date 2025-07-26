@@ -969,7 +969,7 @@ body.dark-mode #work-experience .tech-icon {
 /* ICONS */
 
 .icon {
-  cursor: pointer;
+  /* cursor: pointer; */
   height: 2rem;
   /* transition: transform 0.3s ease-in-out; */
   filter: none;
