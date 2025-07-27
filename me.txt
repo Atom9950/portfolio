@@ -6,7 +6,13 @@ Where do you live: Howrah
 School: Delhi Public School Howrah (DPSH)
 College: Techno India University (TIU)
 Degree: B.Tech in Computer Science (AI/ML) 2022-2026
-Skills: Web Development, AI, Blockchain
+Projrcts: Taskflow, Zentry, Carepulse, Sayanti Beauty Lounge and Exquisite
+Taskflow: An app that helps teachers to manage the assignments with the help of AI
+Zentry: An award winning app's clone with cool animations and transitions
+Carepulse: An app that helps patients to manage their healthcare needs and schedule appointments with doctors
+Sayanti Beauty Lounge: A beauty parlour that provides services like haircuts, manicures, pedicures, makeup, etc.
+Exquisite: A restaurant that provides a variety of cuisines like Chinese, Italian, Indian, etc.
+Skills: Full Stack Web Development, AI, Video Editing
 Interests: Video Editing, Football
 Favourite football team: Real Madrid
 My idol: Cristiano Ronaldo
