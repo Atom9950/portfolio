@@ -1973,18 +1973,18 @@ body.dark-mode .contact-info-upper-container {
 }
 
 .chat-container {
-  background-color: #f5f5f5;
+  background-color: #fafafa;
   border-radius: 50px;
   margin-top: 20px;
   overflow: hidden;
-  border: 2px solid #ccc;
+  border: 2px solid #a3a3a3;
 }
 
 .chat-messages {
   height: 400px;
   padding: 1rem; 
   overflow-y: auto;
-  background-color: white;
+  background-color: #fafafa;
 }
 
 .message-content {
@@ -2003,7 +2003,7 @@ body.dark-mode .contact-info-upper-container {
 
 .user-message .message-content {
   background-color: #191919;
-  color: white;
+  color: #fafafa;
 }
 
 .ai-message .message-content {
@@ -2014,14 +2014,14 @@ body.dark-mode .contact-info-upper-container {
 .chat-input {
   display: flex;
   padding: 0.8rem; 
-  background-color: #fff;
-  border-top: 2px solid #ccc;
+  background-color: #fafafa;
+  border-top: 2px solid #a3a3a3;
 }
 
 #user-input {
   flex: 1;
   padding: 0.6rem; 
-  border: 1px solid #ccc;
+  border: 2px solid #a3a3a3;
   border-radius: 25px;
   margin-right: 0.8rem;
   font-size: 0.9rem; 
@@ -2041,23 +2041,29 @@ body.dark-mode .contact-info-upper-container {
 }
 
 /* Dark mode styles */
-body.dark-mode .chat-container .chat-input{
-  background-color: #2d2d2d;
+body.dark-mode .chat-container {
+  border: solid 2px #ffffff;
+  background-color: #121212;
+}
+body.dark-mode .chat-input{
+  background-color: #121212;
+  border: solid 2px #ffffff;
 }
 
 body.dark-mode .chat-messages {
-  background-color: #1a1a1a;
+  background-color: #121212;
+  border: transparent 2px #ffffff;
 }
 
 body.dark-mode .ai-message .message-content {
-  background-color: #3d3d3d;
+  background-color: #2c2c2c;
   color: white;
 }
 
 body.dark-mode #user-input {
-  background-color: #2d2d2d;
+  background-color: #121212;
   color: white;
-  border-color: #4d4d4d;
+  border-color: #ffffff;
 }
 
 body.dark-mode .send-icon {
@@ -2071,9 +2077,11 @@ body.dark-mode .user-message .message-content{
  }
 
 .loading .message-content {
-  color: #666;
+  color: #2c2c2c;
   font-style: italic;
 }
+
+
 
 /* Disabled state styling */
 #user-input:disabled {
