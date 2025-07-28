@@ -2737,6 +2737,7 @@ body.dark-mode .parallax-text {
   border-radius: 50px;
   overflow: hidden;
   display: block;
+   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .parallax-image img {
@@ -2744,6 +2745,8 @@ body.dark-mode .parallax-text {
   height: 100%;
   object-fit: cover;
   object-position: center;
+   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  
 }
 
 /* Mobile responsiveness */
