@@ -2047,7 +2047,7 @@ body.dark-mode .chat-container {
 }
 body.dark-mode .chat-input{
   background-color: #121212;
-  border: solid 2px #ffffff;
+  border-top: solid 2px #ffffff;
 }
 
 body.dark-mode .chat-messages {
