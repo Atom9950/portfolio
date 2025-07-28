@@ -908,7 +908,7 @@ body.dark-mode #work-experience .tech-icon {
   height: 400px;
   width: 400px;
   margin: auto 0;
-  transition: all 0.3s ease-in-out;
+  
 }
 
 .section__pic-container:hover {
@@ -1079,6 +1079,7 @@ a.btn.btn-color-2:hover {
   height: 400px;
   width: 400px;
   margin: auto 0;
+   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 /* STACKING CARDS EXPERIENCE */
