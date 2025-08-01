@@ -2098,6 +2098,9 @@ body.dark-mode #user-input {
 body.dark-mode .send-icon {
   filter: invert(90%);
 }
+body.dark-mode .contact-send-icon {
+  filter: invert(90%);
+}
 
 body.dark-mode .user-message .message-content{
   background-color: white;
@@ -2697,6 +2700,141 @@ body.dark-mode .line-mask span {
     font-size: 0.93rem;
   }
 }
+
+/* CONTACT FORM STYLES */
+.contact-form-container {
+  max-width: 600px;
+  margin: 3rem auto 4rem auto;
+  padding: 0 2rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.form-group {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  /* display: flex;
+  justify-content: center; */
+  font-weight: 400;
+  color: #333;
+  margin-bottom: 0;
+}
+
+.form-input {
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  background: #fafafa;
+  border: rgb(163, 163, 163) 2px solid;
+  border-radius: 50px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: #333;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.5;
+}
+
+.form-input::placeholder {
+  color: #999;
+  font-weight: 300;
+}
+
+.form-input:focus {
+  outline: none;
+}
+
+#contactSendButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  margin: 1rem auto 0 auto;
+  /* position: relative; */
+}
+
+/* #contactSendButton:hover .tooltip {
+  visibility: visible;
+} */
+
+.contact-send-icon {
+  height: 32px; 
+  width: 32px; 
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.thank-you-text {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+/* Dark mode styles for contact form */
+body.dark-mode .form-input {
+  background: #121212;
+  border: rgb(250, 250, 250) 2px solid;
+  color: white;
+}
+
+body.dark-mode .form-input::placeholder {
+  color: #ccc;
+}
+
+body.dark-mode .thank-you-text {
+  color: white;
+}
+
+body.dark-mode .form-label {
+  color: white;
+}
+
+/* Mobile responsiveness for contact form */
+@media (max-width: 768px) {
+  .contact-form-container {
+    padding: 0 1rem;
+    margin: 2rem auto 3rem auto;
+  }
+  
+  .form-row {
+    flex-direction: column;
+    gap: 1.5rem;
+    
+  }
+  
+  .form-input {
+    padding: 1rem 1.2rem;
+    font-size: 0.95rem;
+  }
+}
+
+
 
 /* TEXT PARALLAX SECTION */
 .text-parallax-section {

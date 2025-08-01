@@ -1,4 +1,85 @@
-import { GEMINI_API_KEY } from './config.js';
+import { GEMINI_API_KEY, EMAILJS_CONFIG } from './config.js';
+
+// CONTACT FORM FUNCTIONALITY
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('contactSendButton');
+  const sendIcon = submitBtn.querySelector('.contact-send-icon');
+  const thankYouText = submitBtn.querySelector('.thank-you-text');
+  
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const formData = new FormData(contactForm);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const message = formData.get('message');
+      
+      // Change button to loading state
+      submitBtn.disabled = true;
+      sendIcon.style.opacity = '0.5';
+      
+      try {
+        // For demo purposes, we'll simulate sending the email
+        // In a real implementation, you'd integrate with a service like EmailJS, Formspree, or Netlify Forms
+        await sendEmail(name, email, message);
+        
+        // Success state - hide icon and show thank you text
+        sendIcon.style.display = 'none';
+        thankYouText.style.display = 'block';
+        contactForm.reset();
+        
+        // Reset button after 3 seconds
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          sendIcon.style.display = 'block';
+          sendIcon.style.opacity = '1';
+          thankYouText.style.display = 'none';
+        }, 3000);
+        
+      } catch (error) {
+        console.error('Error sending email:', error);
+        
+        // Reset button after 2 seconds
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          sendIcon.style.opacity = '1';
+        }, 2000);
+      }
+    });
+  }
+});
+
+// EmailJS Configuration is now imported from config.js
+
+// Initialize EmailJS with your public key
+emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
+
+// Email sending function with EmailJS integration
+async function sendEmail(name, email, message) {
+  try {
+    const templateParams = {
+      from_name: name,
+      from_email: email,
+      to_email: 'sdroy001@gmail.com', // Your email
+      message: message,
+      reply_to: email
+    };
+
+    const response = await emailjs.send(
+      EMAILJS_CONFIG.SERVICE_ID,
+      EMAILJS_CONFIG.TEMPLATE_ID,
+      templateParams
+    );
+
+    console.log('Email sent successfully:', response);
+    return response;
+  } catch (error) {
+    console.error('Failed to send email:', error);
+    throw error;
+  }
+}
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);

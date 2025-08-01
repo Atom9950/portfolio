@@ -17,6 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   </head>
   <body>
@@ -556,7 +557,54 @@
     <section id="contact">
       <p class="section__text__p1">Get In Touch</p>
       <h1 class="title">Contact Me</h1>
-      <div class="contact-info-upper-container">
+      
+      <!-- Contact Form -->
+      <div class="contact-form-container">
+        <form class="contact-form" id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name" class="form-label">Name</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name"
+                placeholder="John Doe" 
+                required
+                class="form-input"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                placeholder="john.doe@example.com"
+                required
+                class="form-input"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message" class="form-label">What can I help you with?</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              placeholder="Type your message here..."
+              required
+              class="form-input form-textarea"
+              rows="5"
+            ></textarea>
+          </div>
+          <button type="submit" id="contactSendButton">
+            <img src="./assets/send-icon.png" alt="Send" class="contact-send-icon magnetic" />
+            <span class="tooltip">Send it!</span>
+            <span class="thank-you-text" style="display: none;">Thank You!</span>
+          </button>
+        </form>
+      </div>
+      
+      <!-- <div class="contact-info-upper-container">
         <div class="contact-info-container">
           <img
             src="./assets/email.png"
@@ -573,7 +621,7 @@
           />
           <p class="nav-links"><a href="https://www.linkedin.com/in/sayandeep-roy-4b1246265?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a></p>
         </div>
-      </div>
+      </div> -->
     </section>
 
     <!-- SVG TEXT ANIMATION -->
