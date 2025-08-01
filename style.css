@@ -347,10 +347,35 @@ a:hover {
 .logo {
   font-size: 1rem;
   color: white;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.logo:hover {
-  cursor: default;
+.logo .logo-text {
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
+}
+
+.logo .logo-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease;
+  white-space: nowrap;
+}
+
+.logo:hover .logo-text {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+.logo:hover .logo-hover {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 
@@ -1945,6 +1970,11 @@ body.dark-mode .nav-links a {
   color: #ffffff !important;
 }
 body.dark-mode .logo {
+    color: #000 !important;
+}
+
+body.dark-mode .logo .logo-text,
+body.dark-mode .logo .logo-hover {
     color: #000 !important;
 }
 
