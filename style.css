@@ -276,18 +276,18 @@ nav {
   left: 0;
   right: 0;
   z-index: 1000;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   height: 17vh;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: #cccccc;
+  padding: 0 2rem;
+  padding-left: 7rem;
 }
 
 .nav-links {
   gap: 2rem;
   list-style: none;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 a {
@@ -335,9 +335,7 @@ a:hover {
   padding-left: 2rem;
   height: 17vh;
   align-items: center;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: #cccccc;
 }
 #hamburger-nav .logo {
   line-height: 1.2;
@@ -345,7 +343,7 @@ a:hover {
 }
 
 .logo {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: white;
   position: relative;
   overflow: hidden;
@@ -499,7 +497,7 @@ a:hover {
   text-decoration: none;
   color: white !important;
   font-weight: 300;
-  font-size: 35px;
+  font-size: 55px;
   transform: translateX(80px);
   opacity: 0;
   transition: all 0.5s ease;
@@ -558,8 +556,8 @@ body.dark-mode #desktop-nav .nav-links a:hover {
   padding-top: 2rem;
   display: flex;
   width: 100%;
-  justify-content: space-between;
-  font-size: 12px;
+  justify-content:space-around;
+  font-size: 22px;
   gap: 15px;
 }
 
@@ -606,7 +604,7 @@ body.dark-mode #desktop-nav .nav-links a:hover {
   }
   
   .nav-footer {
-    font-size: 10px;
+    font-size: 20px;
     gap: 20px;
   }
   
@@ -632,7 +630,7 @@ body.dark-mode #desktop-nav .nav-links a:hover {
   }
   
   .nav-link {
-    font-size: 28px !important;
+    font-size: 50px !important;
   }
   
   .nav-footer {

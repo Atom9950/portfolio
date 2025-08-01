@@ -1015,8 +1015,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (currentNav) {
       currentNav.style.background = scrollPosition > 50 ? 
-        'rgba(255, 255, 255, 0.2)' : 
-        'rgba(255, 255, 255, 0.1)';
+        '#cccccc' : 
+        '#cccccc';
     }
   });
 });
