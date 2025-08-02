@@ -2210,7 +2210,7 @@ body.dark-mode #user-input:disabled {
 }
 
 /* Dark mode styles for preloader */
-/* body.dark-mode .preloader {
+body.dark-mode .preloader {
   background-color: white;
 }
 
@@ -2224,7 +2224,7 @@ body.dark-mode .preloader-text span:first-child {
 
 body.dark-mode .preloader-svg path {
   fill: white;
-} */
+}
 
 /* Add these styles to your existing CSS */
 .transition-overlay {
