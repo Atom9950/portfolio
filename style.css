@@ -3056,7 +3056,7 @@ body.dark-mode .svg-text-section {
   max-width: 320px;
   overflow: hidden;
   height: 100%;
-  animation: scroll-up 15s linear infinite;
+  position: relative;
 }
 
 .testimonials-column-md {
@@ -3072,6 +3072,14 @@ body.dark-mode .svg-text-section {
   flex-direction: column;
   gap: 24px;
   padding-bottom: 24px;
+  position: relative;
+}
+
+.testimonials-loop:nth-child(2) {
+  position: absolute;
+  top: 912px;
+  left: 0;
+  width: 100%;
 }
 
 .testimonial-card {

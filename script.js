@@ -1375,9 +1375,44 @@ function initSVGTextAnimation() {
     });
 }
 
+// TESTIMONIALS ANIMATION
+function initTestimonialsAnimation() {
+    const testimonialColumns = document.querySelectorAll('.testimonials-column');
+    
+    testimonialColumns.forEach((column, columnIndex) => {
+        const loops = column.querySelectorAll('.testimonials-loop');
+        if (loops.length !== 2) return;
+        
+        const firstLoop = loops[0];
+        const secondLoop = loops[1];
+        
+        let yPercent = 0;
+        const speed = 0.1; // Reduced speed for smoother animation
+        
+        const animateColumn = () => {
+            // Reset position when it goes too far
+            if (yPercent <= -100) {
+                yPercent = 0;
+            }
+            
+            // Apply transform to both loops
+            gsap.set(firstLoop, { yPercent: yPercent });
+            gsap.set(secondLoop, { yPercent: yPercent });
+            
+            // Continue animation
+            requestAnimationFrame(animateColumn);
+            // Update yPercent
+            yPercent -= speed;
+        };
+        
+        requestAnimationFrame(animateColumn);
+    });
+}
+
 // Call this after DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   initTextReveal();
   initTextParallax();
   initSVGTextAnimation();
+  initTestimonialsAnimation();
 });
