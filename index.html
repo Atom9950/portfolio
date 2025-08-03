@@ -748,49 +748,65 @@
       <h1 class="title">Contact Me</h1>
       
       <!-- Contact Form -->
-      <div class="contact-form-container">
-        <form class="contact-form" id="contactForm">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="name" class="form-label">Name</label>
-              <input 
-                type="text" 
-                id="name" 
-                name="name"
-                placeholder="John Doe" 
-                required
-                class="form-input"
-              />
+      <div class="contact-form-main">
+        <div class="contact-form-body">
+          <form class="contact-form" id="contactForm">
+            <div class="form-item">
+              <div class="form-content">
+                <label for="name" class="form-label">Name:</label>
+                <div class="form-underline"></div>
+                <input 
+                  type="text" 
+                  id="name" 
+                  name="name"
+                  placeholder="John Doe*"
+                  required
+                  class="form-input"
+                />
+              </div>
             </div>
-            <div class="form-group">
-              <label for="email" class="form-label">Email</label>
-              <input 
-                type="email" 
-                id="email" 
-                name="email" 
-                placeholder="john.doe@example.com"
-                required
-                class="form-input"
-              />
+            
+            <div class="form-item">
+              <div class="form-content">
+                <label for="email" class="form-label">Email:</label>
+                <div class="form-underline"></div>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  placeholder="johndoe@example.com*"
+                  required
+                  class="form-input"
+                />
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="message" class="form-label">What can I help you with?</label>
-            <textarea 
-              id="message" 
-              name="message" 
-              placeholder="Type your message here..."
-              required
-              class="form-input form-textarea"
-              rows="5"
-            ></textarea>
-          </div>
-          <button type="submit" id="contactSendButton">
-            <img src="./assets/send-icon.png" alt="Send" class="contact-send-icon magnetic" />
-            <span class="tooltip">Send it!</span>
-            <span class="thank-you-text" style="display: none;">Thank You!</span>
-          </button>
-        </form>
+            
+            <div class="form-item">
+              <div class="form-content">
+                <label for="message" class="form-label">Your Message:</label>
+                <div class="form-underline"></div>
+                <textarea 
+                  id="message" 
+                  name="message" 
+                  placeholder="Hello Sayandeep, can you help me with...*"
+                  required
+                  class="form-input form-textarea"
+                  rows="5"
+                ></textarea>
+              </div>
+            </div>
+            
+            <div class="form-item">
+              <div class="form-content">
+                <button type="submit" id="contactSendButton">
+                  <img src="./assets/send-icon.png" alt="Send" class="contact-send-icon magnetic" />
+                  <!-- <span class="tooltip">Send it!</span> -->
+                  <span class="thank-you-text" style="display: none;">Thank You!</span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
       
       <!-- <div class="contact-info-upper-container">
