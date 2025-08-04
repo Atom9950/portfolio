@@ -3576,7 +3576,7 @@ body.dark-mode .skill-icon{
   font-size: 1.2rem;
   font-weight: 600;
   margin: 0;
-  color: rgb(85, 85, 85);
+  color: rgb(0, 0, 0);
   transition: color 0.3s ease;
 }
 
