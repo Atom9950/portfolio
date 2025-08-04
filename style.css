@@ -2803,8 +2803,8 @@ body.dark-mode .line-mask span {
 }
 
 #contactSendButton {
-  /* background: black;
-  color: white; */
+   background: transparent;
+  /* color: white; */
   border: none;
   border-radius: 50px;
   /* padding: 0rem; */
