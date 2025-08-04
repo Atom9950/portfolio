@@ -3294,22 +3294,22 @@ body.dark-mode .author-avatar {
   }
   
   .testimonials-columns {
-    height: 600px;
+    height: 650px;
     gap: 20px;
   }
   
   .testimonials-column {
-    flex: 0 0 280px;
-    max-width: 280px;
+    flex: 0 0 320px;
+    max-width: 320px;
   }
   
   .testimonial-card {
-    padding: 30px;
-    min-height: 180px;
+    padding: 35px;
+    min-height: 200px;
   }
   
   .testimonial-text {
-    font-size: 14px;
+    font-size: 15px;
   }
 }
 
@@ -3320,23 +3320,23 @@ body.dark-mode .author-avatar {
   }
   
   .testimonials-columns {
-    height: 500px;
+    height: 550px;
     justify-content: center;
   }
   
   .testimonials-column {
-    flex: 0 0 260px;
-    max-width: 260px;
+    flex: 0 0 300px;
+    max-width: 300px;
   }
   
   .testimonial-card {
-    padding: 25px;
+    padding: 30px;
     border-radius: 30px;
-    min-height: 160px;
+    min-height: 180px;
   }
   
   .testimonial-text {
-    font-size: 13px;
+    font-size: 14px;
     margin-bottom: 15px;
   }
   
