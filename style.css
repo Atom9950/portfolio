@@ -3361,6 +3361,7 @@ body.dark-mode .author-avatar {
   margin: 80px 0;
   overflow: hidden;
   position: relative;
+  height: 50vh;
 }
 
 .skills-container {
