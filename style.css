@@ -2933,10 +2933,10 @@ body.dark-mode #contact .form-item:last-of-type {
     font-size: 1.5rem !important;
   }
   
-  .form-underline {
+  /* .form-underline {
     width: 60px;
     height: 1.5px;
-  }
+  } */
   
   .form-input {
     padding: 0.8rem 0;
