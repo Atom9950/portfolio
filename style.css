@@ -1572,13 +1572,13 @@ article .icon {
   bottom: 0;
   height: 800px;
   width: 100%;
-  background-color: #000000;
+  background-color: #111111;
   color: white;
   z-index: 100;
 }
 
 .sticky-footer-content {
-  background-color: #000000;
+  background-color: #111111;
   padding: 80px 100px;
   height: 100%;
   width: 100%;
@@ -1670,12 +1670,12 @@ article .icon {
 
 /* Dark Mode Support for Sticky Footer */
 body.dark-mode .sticky-footer {
-  background-color: #ffffff;
+  background-color: #f2f2f2;
   color: #000000;
 }
 
 body.dark-mode .sticky-footer-content {
-  background-color: #ffffff;
+  background-color: #f2f2f2;
 }
 
 body.dark-mode .footer-nav-title {
