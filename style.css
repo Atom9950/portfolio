@@ -1679,7 +1679,7 @@ body.dark-mode .sticky-footer-content {
 }
 
 body.dark-mode .footer-nav-title {
-  color: rgba(0, 0, 0, 0.5);
+  color: rgb(0, 0, 0);
 }
 
 body.dark-mode .footer-nav-link {
@@ -2592,7 +2592,7 @@ body.dark-mode .footer-brand-text {
 }
 
 body.dark-mode .footer-nav-title {
-    color: #555555 !important;
+    color: #000000 !important;
 }
 
 body.dark-mode #projects .tech-stack .tech-icon {
