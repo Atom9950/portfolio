@@ -564,7 +564,18 @@
             </div>
           </div>
         </div>
-        <div class="project-item" data-index="4" data-color="#706D63" data-link="https://atom9950.github.io/Sayanti-Beauty-Lounge-Exquisite/">
+        <div class="project-item hidden-project" data-index="4" data-color="#4A90E2" data-link="https://prompt-to-pixel.vercel.app/">
+          <div>
+            <h2 class="project-title">Prompt To Pixel</h2>
+            <p class="project-description">AI Image Generation</p>
+            <div class="tech-stack">
+              <img src="./assets/icons8-nextjs-48.png" alt="Next.js" class="tech-icon magnetic">
+              <img src="./assets/icons8-typescript-50.png" alt="TypeScript" class="tech-icon magnetic">
+              <img src="./assets/icons8-tailwind-css-48.png" alt="Tailwind" class="tech-icon magnetic">
+            </div>
+          </div>
+        </div>
+        <div class="project-item hidden-project" data-index="5" data-color="#706D63" data-link="https://atom9950.github.io/Sayanti-Beauty-Lounge-Exquisite/">
           <div>
             <h2 class="project-title">Sayanti Beauty Lounge</h2>
             <p class="project-description">Design & Development</p>
@@ -575,6 +586,14 @@
             </div>
           </div>
         </div>
+      </div>
+      
+      <!-- View All Button -->
+      <div class="view-all-container">
+        <button class="view-all-btn magnetic" id="viewAllBtn">
+          <span class="btn-text">View All Projects</span>
+          <span class="btn-icon">↓</span>
+        </button>
       </div>
     </div>
         
@@ -593,6 +612,9 @@
         </div>
         <div class="modal">
           <img src="./assets/carepulse.png" alt="Carepulse">
+        </div>
+        <div class="modal">
+          <img src="./assets/prompt-to-pixel.png" alt="Prompt To Pixel">
         </div>
         <div class="modal">
           <img src="./assets/dhepsi.png" alt="Sayanti Beauty Lounge">
@@ -966,9 +988,9 @@
             
             <div class="form-item">
               <div class="form-content">
-                <button type="submit" id="contactSendButton">
-                  <img src="./assets/send-icon.png" alt="Send" class="contact-send-icon magnetic" />
-                  <!-- <span class="tooltip">Send it!</span> -->
+                <button type="submit" id="contactSendButton" class="magnetic">
+                  <span class="btn-text">Send <br> Message</span>
+                  <!-- <img src="./assets/send-icon.png" alt="Send" class="contact-send-icon" /> -->
                   <span class="thank-you-text" style="display: none;">Thank You!</span>
                 </button>
               </div>

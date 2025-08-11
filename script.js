@@ -4,7 +4,7 @@ import { GEMINI_API_KEY, EMAILJS_CONFIG } from './config.js';
 document.addEventListener('DOMContentLoaded', function() {
   const contactForm = document.getElementById('contactForm');
   const submitBtn = document.getElementById('contactSendButton');
-  const sendIcon = submitBtn.querySelector('.contact-send-icon');
+  const btnText = submitBtn.querySelector('.btn-text');
   const thankYouText = submitBtn.querySelector('.thank-you-text');
   
   if (contactForm) {
@@ -18,23 +18,25 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Change button to loading state
       submitBtn.disabled = true;
-      sendIcon.style.opacity = '0.5';
+      if (btnText) btnText.style.opacity = '0.5';
       
       try {
         // For demo purposes, we'll simulate sending the email
         // In a real implementation, you'd integrate with a service like EmailJS, Formspree, or Netlify Forms
         await sendEmail(name, email, message);
         
-        // Success state - hide icon and show thank you text
-        sendIcon.style.display = 'none';
+        // Success state - hide text and show thank you text
+        if (btnText) btnText.style.display = 'none';
         thankYouText.style.display = 'block';
         contactForm.reset();
         
         // Reset button after 3 seconds
         setTimeout(() => {
           submitBtn.disabled = false;
-          sendIcon.style.display = 'block';
-          sendIcon.style.opacity = '1';
+          if (btnText) {
+            btnText.style.display = 'block';
+            btnText.style.opacity = '1';
+          }
           thankYouText.style.display = 'none';
         }, 3000);
         
@@ -44,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Reset button after 2 seconds
         setTimeout(() => {
           submitBtn.disabled = false;
-          sendIcon.style.opacity = '1';
+          if (btnText) btnText.style.opacity = '1';
         }, 2000);
       }
     });
@@ -1114,6 +1116,11 @@ class AnimatedProjects {
         this.init();
     }
     init() {
+        this.bindEvents();
+        this.setupMouseTracking();
+    }
+    
+    bindEvents() {
         this.projectItems.forEach((item, index) => {
             item.addEventListener('mouseenter', () => {
                 this.setModal(true, index);
@@ -1129,7 +1136,12 @@ class AnimatedProjects {
                 }
             });
         });
-        this.setupMouseTracking();
+    }
+    
+    reinitialize() {
+        // Re-query project items to include newly shown ones
+        this.projectItems = document.querySelectorAll('.project-item');
+        // The existing event listeners will still work, we just need to update the collection
     }
     setModal(active, index) {
         this.modal = { active, index };
@@ -1186,9 +1198,58 @@ class AnimatedProjects {
 }
 document.addEventListener('DOMContentLoaded', () => {
     if (document.getElementById('modalContainer')) {
-        new AnimatedProjects();
+        window.animatedProjectsInstance = new AnimatedProjects();
     }
+    
+    // Initialize View All Projects functionality
+    initViewAllProjects();
 });
+
+// View All Projects Functionality
+function initViewAllProjects() {
+    const viewAllBtn = document.getElementById('viewAllBtn');
+    const hiddenProjects = document.querySelectorAll('.hidden-project');
+    const btnText = viewAllBtn.querySelector('.btn-text');
+    let isExpanded = false;
+
+    if (!viewAllBtn || hiddenProjects.length === 0) return;
+
+    viewAllBtn.addEventListener('click', () => {
+        isExpanded = !isExpanded;
+        
+        if (isExpanded) {
+            // Show hidden projects
+            hiddenProjects.forEach((project, index) => {
+                setTimeout(() => {
+                    project.classList.add('show');
+                }, index * 100); // Stagger the animation
+            });
+            
+            // Update button
+            viewAllBtn.classList.add('expanded');
+            btnText.textContent = 'View';
+            
+            // Reinitialize project interactions after showing
+            setTimeout(() => {
+                if (window.animatedProjectsInstance) {
+                    window.animatedProjectsInstance.reinitialize();
+                }
+            }, hiddenProjects.length * 100 + 100);
+            
+        } else {
+            // Hide projects
+            hiddenProjects.forEach((project, index) => {
+                setTimeout(() => {
+                    project.classList.remove('show');
+                }, index * 50);
+            });
+            
+            // Update button
+            viewAllBtn.classList.remove('expanded');
+            btnText.textContent = 'View All Projects';
+        }
+    });
+}
 
 // Text Reveal Animation
 function initTextReveal() {

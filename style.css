@@ -2568,6 +2568,105 @@ body.dark-mode #projects .project-item:last-of-type {
     border-bottom: 2px solid rgb(255, 255, 255);
 }
 
+/* Hidden Projects Styles */
+.hidden-project {
+    display: none !important;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.hidden-project.show {
+    display: flex !important;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* View All Button Styles - Matching Burger Button Design */
+.view-all-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.view-all-btn {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: none;
+    color: white;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    gap: 0.3rem;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    line-height: 1.2;
+}
+
+.view-all-btn:hover {
+    transform: scale(1.05);
+}
+
+.view-all-btn .btn-text {
+    margin-bottom: 0.2rem;
+}
+
+.view-all-btn .btn-icon {
+    transition: transform 0.3s ease;
+    font-size: 1.2rem;
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.view-all-btn.expanded .btn-icon {
+    transform: translateX(-50%) rotate(180deg);
+}
+
+.view-all-btn.expanded .btn-text::after {
+    content: " Less";
+}
+
+/* Dark mode styles for view all button */
+body.dark-mode .view-all-btn {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    color: black;
+}
+
+/* Responsive styles for view all button */
+@media (max-width: 768px) {
+    .view-all-container {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .view-all-btn {
+        width: 100px;
+        height: 100px;
+        font-size: 0.7rem;
+    }
+    
+    .view-all-btn .btn-icon {
+        font-size: 1rem;
+        bottom: 12px;
+    }
+}
+
 /* === GLOBAL FONT STYLES (Unified with Projects Section) === */
 html, body {
     font-family: 'Poppins', Arial, Helvetica, sans-serif;
@@ -2842,40 +2941,51 @@ body.dark-mode .line-mask span {
 }
 
 #contactSendButton {
-   background: transparent;
-  /* color: white; */
-  border: none;
-  border-radius: 50px;
-  /* padding: 0rem; */
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 500;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   cursor: pointer;
-  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   display: flex;
-  gap: 0.8rem;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  align-self: flex-end;
-  min-width: 160px;
-}
-
-/* #contactSendButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-} */
-
-.contact-send-icon {
-  height: 40px; 
-  width: 40px; 
   transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border: none;
+  color: white;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  gap: 0.3rem;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  line-height: 1.2;
+  align-self: flex-end;
+  transform: translateY(-130px);
+  z-index: 10;
 }
+
+#contactSendButton:hover {
+  transform: translateY(-130px) scale(1.05);
+}
+
+#contactSendButton .btn-text {
+  margin-bottom: 0.2rem;
+}
+
+
 
 .thank-you-text {
-  font-family: 'Poppins', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 400;
-  color: #333333;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: white;
+  text-align: center;
+  line-height: 1.2;
+  margin: 0;
   transition: all 0.3s ease;
 }
 
@@ -2902,11 +3012,13 @@ body.dark-mode .form-input:focus {
 }
 
 body.dark-mode .thank-you-text {
-  color: white;
+  color: black;
 }
 
 body.dark-mode #contactSendButton {
-  background: transparent;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: black;
 }
 
@@ -2944,16 +3056,18 @@ body.dark-mode #contact .form-item:last-of-type {
   }
   
   #contactSendButton {
-    padding: 1rem 1.5rem;
-    font-size: 1rem;
+    width: 100px;
+    height: 100px;
+    font-size: 0.7rem;
+    transform: translateY(-80px);
   }
-  .contact-send-icon {
-    height: 30px; 
-    width: 30px; 
+  
+  #contactSendButton:hover {
+    transform: translateY(-80px) scale(1.05);
   }
   .thank-you-text {
-    font-size: 1.5rem;
-}
+    font-size: 0.7rem;
+  }
 }
 
 
