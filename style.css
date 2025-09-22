@@ -2568,6 +2568,16 @@ body.dark-mode #projects .project-item:last-of-type {
     border-bottom: 2px solid rgb(255, 255, 255);
 }
 
+/* Hide mobile project content on desktop */
+.project-image,
+.project-content {
+    display: none;
+}
+
+.project-desktop-content {
+    display: block;
+}
+
 /* Hidden Projects Styles */
 .hidden-project {
     display: none !important;
