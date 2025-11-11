@@ -1234,6 +1234,8 @@ function initViewAllProjects() {
                 if (window.animatedProjectsInstance) {
                     window.animatedProjectsInstance.reinitialize();
                 }
+                // Refresh ScrollTrigger to recalculate positions
+                ScrollTrigger.refresh();
             }, hiddenProjects.length * 100 + 100);
             
         } else {
@@ -1247,6 +1249,11 @@ function initViewAllProjects() {
             // Update button
             viewAllBtn.classList.remove('expanded');
             btnText.textContent = 'View All Projects';
+            
+            // Refresh ScrollTrigger after hiding
+            setTimeout(() => {
+                ScrollTrigger.refresh();
+            }, hiddenProjects.length * 50 + 100);
         }
     });
 }
