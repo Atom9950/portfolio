@@ -1314,9 +1314,9 @@ function initTextReveal() {
                 gsap.to(span, {
                     y: 0,
                     opacity: 1,
-                    duration: 0.5,
+                    duration: 0.3,
                     ease: 'power3.out',
-                    delay: i * 0.12
+                    delay: i * 0.02
                 });
             }
         });
