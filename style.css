@@ -3534,7 +3534,6 @@ body.dark-mode .author-avatar {
   display: flex;
   align-items: center;
   gap: 80px;
-  animation: scrollSkills 30s linear infinite;
   width: fit-content;
 }
 
@@ -3581,15 +3580,6 @@ body.dark-mode .author-avatar {
   transition: all 0.3s ease;
 }
 
-@keyframes scrollSkills {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
 /* Dark mode styles for skills */
 body.dark-mode .skill-item {
   background: transparent;
@@ -3618,7 +3608,6 @@ body.dark-mode .skill-icon{
   
   .skills-track {
     gap: 60px;
-    animation: scrollSkills 25s linear infinite;
   }
   
   .skill-item {
@@ -3645,7 +3634,6 @@ body.dark-mode .skill-icon{
   
   .skills-track {
     gap: 40px;
-    animation: scrollSkills 20s linear infinite;
   }
   
   .skill-item {

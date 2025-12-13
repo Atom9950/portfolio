@@ -153,6 +153,42 @@ window.addEventListener('resize', () => {
   }
 });
 
+// SKILLS SLIDER ANIMATION (Scroll direction based) 
+let skillsXPercent = 0;
+let skillsDirection = -1;
+
+const skillsTrack = document.querySelector('.skills-track');
+
+if (skillsTrack) {
+  gsap.to(document.documentElement, {
+    scrollTrigger: {
+      trigger: document.documentElement,
+      scrub: 0.5,
+      onUpdate: e => skillsDirection = e.direction * -1
+    },
+  });
+
+  const animateSkillsSlider = () => {
+    // Update xPercent based on scroll direction
+    skillsXPercent += 0.04 * skillsDirection;
+
+    // Wrap position seamlessly for infinite loop at -50% (where duplicates start)
+    if (skillsXPercent <= -50) {
+      skillsXPercent = 0;
+    } else if (skillsXPercent > 0) {
+      skillsXPercent = -50;
+    }
+
+    // Apply transform to skills track
+    gsap.set(skillsTrack, { xPercent: skillsXPercent });
+
+    // Continue animation
+    requestAnimationFrame(animateSkillsSlider);
+  };
+
+  requestAnimationFrame(animateSkillsSlider);
+}
+
 function initAnimations() {
   // Chatbot Section Animation - Fixed version
   gsap.from("#ai-chat .chat-container", {
